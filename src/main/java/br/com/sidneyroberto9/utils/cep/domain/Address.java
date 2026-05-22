@@ -1,22 +1,24 @@
 package br.com.sidneyroberto9.utils.cep.domain;
 
-import lombok.Value;
-import lombok.experimental.Accessors;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Value
-@Accessors(fluent = true)
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Address {
-    String uf;
-    String cep;
-    String bairro;
-    String localidade;
-    String logradouro;
-    String complemento;
-    String ibge;
-    String gia;
-    String ddd;
-    String siafi;
-    String unidade;
-    String estado;
-    String regiao;
+    private String uf;
+    private String cep;
+    private String bairro;
+    private String localidade;
+    private String logradouro;
+    private String complemento;
+    private String ibge;
+    private String gia;
+    private String ddd;
+    private String siafi;
+    private String unidade;
+    private String estado;
+    private String regiao;
 }
