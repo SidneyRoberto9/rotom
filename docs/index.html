@@ -9,97 +9,80 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
           rel="stylesheet"/>
     <style>
-        * {
-            font-family: 'Inter', sans-serif;
-        }
+        * { font-family: 'Inter', sans-serif; }
+        code, pre, .mono { font-family: 'JetBrains Mono', monospace; }
 
-        code, pre, .mono {
-            font-family: 'JetBrains Mono', monospace;
-        }
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
 
-        ::-webkit-scrollbar {
-            width: 5px;
-        }
+        .nav-link { transition: all 0.15s; }
+        .nav-link.active { color: #818cf8; background: #1e1b4b; }
 
-        ::-webkit-scrollbar-track {
-            background: #0f172a;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #334155;
-            border-radius: 4px;
-        }
-
-        .nav-link {
-            transition: all 0.15s;
-        }
-
-        .nav-link.active {
-            color: #818cf8;
-            background: #1e1b4b;
-        }
-
-        .fade-in {
-            animation: fadeIn 0.4s ease;
-        }
-
+        .fade-in { animation: fadeIn 0.4s ease; }
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(6px);
+            from { opacity: 0; transform: translateY(6px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .method-row:hover td { background: rgba(99, 102, 241, 0.05); }
+
+        .tag-boolean { background: #064e3b; color: #6ee7b7; }
+        .tag-string  { background: #1e3a5f; color: #93c5fd; }
+        .tag-object  { background: #3b1f5e; color: #c4b5fd; }
+        .tag-long    { background: #422006; color: #fbbf24; }
+        .tag-void    { background: #1c1c1c; color: #9ca3af; }
+
+        /* Sidebar mobile drawer */
+        #sidebar {
+            transition: transform 0.25s ease;
+        }
+        @media (max-width: 1023px) {
+            #sidebar {
+                transform: translateX(-100%);
+                z-index: 40;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            #sidebar.open {
+                transform: translateX(0);
             }
         }
 
-        .method-row:hover td {
-            background: rgba(99, 102, 241, 0.05);
+        #backdrop {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55);
+            z-index: 30;
+            backdrop-filter: blur(2px);
         }
-
-        .tag-boolean {
-            background: #064e3b;
-            color: #6ee7b7;
-        }
-
-        .tag-string {
-            background: #1e3a5f;
-            color: #93c5fd;
-        }
-
-        .tag-object {
-            background: #3b1f5e;
-            color: #c4b5fd;
-        }
-
-        .tag-long {
-            background: #422006;
-            color: #fbbf24;
-        }
-
-        .tag-void {
-            background: #1c1c1c;
-            color: #9ca3af;
-        }
+        #backdrop.open { display: block; }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-300 min-h-screen">
 
+<!-- Mobile backdrop -->
+<div id="backdrop" onclick="closeSidebar()"></div>
 
-<aside class="fixed left-0 top-0 h-full w-60 bg-slate-900 border-r border-slate-800 flex flex-col z-20 overflow-y-auto"
+<aside class="fixed left-0 top-0 h-full w-64 bg-slate-900 border-r border-slate-800 flex flex-col z-40 overflow-y-auto"
        id="sidebar">
-    <div class="p-5 border-b border-slate-800">
-        <div class="flex items-center gap-2 mb-1">
-            <div class="w-2 h-2 rounded-full bg-indigo-500"></div>
-            <h1 class="text-white font-bold text-base tracking-tight">utils-java</h1>
+    <div class="p-5 border-b border-slate-800 flex items-center justify-between">
+        <div>
+            <div class="flex items-center gap-2 mb-1">
+                <div class="w-2 h-2 rounded-full bg-indigo-500"></div>
+                <h1 class="text-white font-bold text-base tracking-tight">utils-java</h1>
+            </div>
+            <span class="mono text-xs text-slate-500">v1.0.0 · Java 11</span>
         </div>
-        <span class="mono text-xs text-slate-500">v1.0.0 · Java 11</span>
+        <button class="lg:hidden text-slate-500 hover:text-slate-300 p-1" onclick="closeSidebar()">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+        </button>
     </div>
 
     <nav class="flex-1 p-3 space-y-0.5 text-sm">
         <a class="nav-link flex items-center gap-2 px-3 py-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-800"
-           href="#overview">
+           href="#overview" onclick="closeSidebar()">
             <span class="text-slate-600">#</span> Visão Geral
         </a>
 
@@ -107,11 +90,11 @@
             <span class="text-xs font-semibold uppercase tracking-wider text-slate-600">Documentos</span>
         </div>
         <a class="nav-link flex items-center gap-2 px-3 py-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-800"
-           href="#cpf">
+           href="#cpf" onclick="closeSidebar()">
             <span class="mono text-xs bg-indigo-900/50 text-indigo-300 px-1.5 py-0.5 rounded">CPF</span> CPFService
         </a>
         <a class="nav-link flex items-center gap-2 px-3 py-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-800"
-           href="#cnpj">
+           href="#cnpj" onclick="closeSidebar()">
             <span class="mono text-xs bg-indigo-900/50 text-indigo-300 px-1.5 py-0.5 rounded">CNPJ</span> CNPJService
         </a>
 
@@ -119,7 +102,7 @@
             <span class="text-xs font-semibold uppercase tracking-wider text-slate-600">Comunicação</span>
         </div>
         <a class="nav-link flex items-center gap-2 px-3 py-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-800"
-           href="#phone">
+           href="#phone" onclick="closeSidebar()">
             <span class="mono text-xs bg-violet-900/50 text-violet-300 px-1.5 py-0.5 rounded">TEL</span>
             PhoneNumberService
         </a>
@@ -128,11 +111,11 @@
             <span class="text-xs font-semibold uppercase tracking-wider text-slate-600">Localização</span>
         </div>
         <a class="nav-link flex items-center gap-2 px-3 py-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-800"
-           href="#cep">
+           href="#cep" onclick="closeSidebar()">
             <span class="mono text-xs bg-cyan-900/50 text-cyan-300 px-1.5 py-0.5 rounded">CEP</span> CepService
         </a>
         <a class="nav-link flex items-center gap-2 px-3 py-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-800"
-           href="#ceputils">
+           href="#ceputils" onclick="closeSidebar()">
             <span class="mono text-xs bg-cyan-900/50 text-cyan-300 px-1.5 py-0.5 rounded">CEP</span> CepUtils
         </a>
 
@@ -140,11 +123,11 @@
             <span class="text-xs font-semibold uppercase tracking-wider text-slate-600">Data</span>
         </div>
         <a class="nav-link flex items-center gap-2 px-3 py-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-800"
-           href="#dateservice">
+           href="#dateservice" onclick="closeSidebar()">
             <span class="mono text-xs bg-amber-900/50 text-amber-300 px-1.5 py-0.5 rounded">DT</span> DateService
         </a>
         <a class="nav-link flex items-center gap-2 px-3 py-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-800"
-           href="#dateutils">
+           href="#dateutils" onclick="closeSidebar()">
             <span class="mono text-xs bg-amber-900/50 text-amber-300 px-1.5 py-0.5 rounded">DT</span> DateUtils
         </a>
 
@@ -152,15 +135,15 @@
             <span class="text-xs font-semibold uppercase tracking-wider text-slate-600">Texto</span>
         </div>
         <a class="nav-link flex items-center gap-2 px-3 py-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-800"
-           href="#string">
+           href="#string" onclick="closeSidebar()">
             <span class="mono text-xs bg-emerald-900/50 text-emerald-300 px-1.5 py-0.5 rounded">STR</span> StringUtils
         </a>
     </nav>
 
     <div class="p-4 border-t border-slate-800">
-        <a class="flex items-center gap-2 text-xs text-slate-500 hover:text-slate-300 transition" href="https://github.com/sidneyroberto9/utils-java"
-           target="_blank">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+        <a class="flex items-center gap-2 text-xs text-slate-500 hover:text-slate-300 transition"
+           href="https://github.com/sidneyroberto9/utils-java" target="_blank">
+            <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
             </svg>
             sidneyroberto9/utils-java
@@ -169,47 +152,51 @@
 </aside>
 
 
-<main class="ml-60 min-h-screen">
+<main class="lg:ml-64 min-h-screen">
 
-    
-    <header class="sticky top-0 z-10 bg-slate-950/80 backdrop-blur border-b border-slate-800 px-8 py-3 flex items-center justify-between">
-        <div class="flex items-center gap-3">
-            <span class="mono text-xs text-slate-500">com.github.sidneyroberto9</span>
-            <span class="text-slate-700">/</span>
-            <span class="mono text-xs text-slate-400">utils</span>
-            <span class="text-slate-700">/</span>
-            <span class="mono text-xs text-slate-500">1.0.0</span>
+    <header class="sticky top-0 z-10 bg-slate-950/80 backdrop-blur border-b border-slate-800 px-4 sm:px-8 py-3 flex items-center justify-between gap-3">
+        <div class="flex items-center gap-2 sm:gap-3 min-w-0">
+            <!-- Hamburger — mobile only -->
+            <button class="lg:hidden shrink-0 text-slate-400 hover:text-white p-1 -ml-1" onclick="openSidebar()">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+            <div class="hidden sm:flex items-center gap-2 sm:gap-3 min-w-0 text-slate-500">
+                <span class="mono text-xs truncate">com.github.sidneyroberto9</span>
+                <span class="text-slate-700">/</span>
+                <span class="mono text-xs text-slate-400">utils</span>
+                <span class="text-slate-700">/</span>
+                <span class="mono text-xs">1.0.0</span>
+            </div>
+            <span class="sm:hidden mono text-xs text-slate-400 font-semibold">utils-java</span>
         </div>
-        <div class="flex items-center gap-2">
-            <input class="mono text-xs bg-slate-800 border border-slate-700 text-slate-300 rounded-lg px-3 py-1.5 w-48 focus:outline-none focus:border-indigo-500 placeholder-slate-600" id="search" onkeyup="search()" placeholder="Buscar método..."
-                   type="text"/>
+        <div class="flex items-center gap-2 shrink-0">
+            <input class="mono text-xs bg-slate-800 border border-slate-700 text-slate-300 rounded-lg px-3 py-1.5 w-36 sm:w-48 focus:outline-none focus:border-indigo-500 placeholder-slate-600"
+                   id="search" onkeyup="filterSearch()" placeholder="Buscar método..." type="text"/>
         </div>
     </header>
 
-    <div class="px-8 py-10 max-w-4xl mx-auto space-y-20 fade-in">
+    <div class="px-4 sm:px-8 py-8 sm:py-10 max-w-4xl mx-auto space-y-16 sm:space-y-20 fade-in">
 
-        
+        <!-- Visão Geral -->
         <section id="overview">
-            <h2 class="text-2xl font-bold text-white mb-2">Visão Geral</h2>
-            <p class="text-slate-400 mb-6 leading-relaxed">
+            <h2 class="text-xl sm:text-2xl font-bold text-white mb-2">Visão Geral</h2>
+            <p class="text-slate-400 mb-6 leading-relaxed text-sm sm:text-base">
                 Biblioteca utilitária para operações brasileiras — validação e formatação de documentos, lookup de CEP
                 com múltiplos providers, cálculo de dias úteis com calendário nacional e utilidades de string.
             </p>
 
-            <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 mb-6">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 sm:p-5 mb-6">
                 <p class="text-xs text-slate-500 mb-2 font-semibold uppercase tracking-wider">Maven</p>
-                <pre class="mono text-sm text-slate-300 overflow-x-auto"><span
-                        class="text-slate-500">&lt;dependency&gt;</span>
-  <span class="text-slate-500">&lt;groupId&gt;</span><span class="text-indigo-400">com.github.sidneyroberto9</span><span
-                            class="text-slate-500">&lt;/groupId&gt;</span>
-  <span class="text-slate-500">&lt;artifactId&gt;</span><span class="text-indigo-400">utils</span><span
-                            class="text-slate-500">&lt;/artifactId&gt;</span>
-  <span class="text-slate-500">&lt;version&gt;</span><span class="text-emerald-400">latest</span><span
-                            class="text-slate-500">&lt;/version&gt;</span>
+                <pre class="mono text-xs sm:text-sm text-slate-300 overflow-x-auto"><span class="text-slate-500">&lt;dependency&gt;</span>
+  <span class="text-slate-500">&lt;groupId&gt;</span><span class="text-indigo-400">com.github.sidneyroberto9</span><span class="text-slate-500">&lt;/groupId&gt;</span>
+  <span class="text-slate-500">&lt;artifactId&gt;</span><span class="text-indigo-400">utils</span><span class="text-slate-500">&lt;/artifactId&gt;</span>
+  <span class="text-slate-500">&lt;version&gt;</span><span class="text-emerald-400">latest</span><span class="text-slate-500">&lt;/version&gt;</span>
 <span class="text-slate-500">&lt;/dependency&gt;</span></pre>
             </div>
 
-            <div class="grid grid-cols-2 gap-3">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 <a class="service-card group bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-indigo-500/40 rounded-xl p-4 transition cursor-pointer"
                    href="#cpf">
                     <div class="flex items-center gap-3 mb-2">
@@ -232,8 +219,7 @@
                         <span class="mono text-xs bg-violet-900/50 text-violet-300 px-2 py-0.5 rounded font-medium">TEL</span>
                         <span class="text-white font-medium text-sm group-hover:text-violet-300 transition">PhoneNumberService</span>
                     </div>
-                    <p class="text-slate-500 text-xs">Formatação, validação e extração de dados de telefones
-                        brasileiros.</p>
+                    <p class="text-slate-500 text-xs">Formatação, validação e extração de dados de telefones brasileiros.</p>
                 </a>
                 <a class="service-card group bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-cyan-500/40 rounded-xl p-4 transition cursor-pointer"
                    href="#cep">
@@ -261,12 +247,10 @@
                 </a>
             </div>
 
-            <div class="mt-6 bg-slate-900 border border-slate-800 rounded-xl p-5">
-                <p class="text-xs text-slate-500 mb-3 font-semibold uppercase tracking-wider">Spring Boot —
-                    Auto-configuração</p>
-                <p class="text-slate-400 text-sm mb-3">Todos os services são registrados automaticamente como beans via
-                    auto-configuração. Nenhuma anotação necessária no projeto.</p>
-                <pre class="mono text-sm text-slate-300 overflow-x-auto"><span class="text-slate-500">// Injeção direta no seu service</span>
+            <div class="mt-6 bg-slate-900 border border-slate-800 rounded-xl p-4 sm:p-5">
+                <p class="text-xs text-slate-500 mb-3 font-semibold uppercase tracking-wider">Spring Boot — Auto-configuração</p>
+                <p class="text-slate-400 text-sm mb-3">Todos os services são registrados automaticamente como beans via auto-configuração. Nenhuma anotação necessária no projeto.</p>
+                <pre class="mono text-xs sm:text-sm text-slate-300 overflow-x-auto"><span class="text-slate-500">// Injeção direta no seu service</span>
 <span class="text-violet-400">@Service</span>
 <span class="text-amber-300">public class</span> <span class="text-white">OrderService</span> {
     <span class="text-amber-300">private final</span> <span class="text-cyan-300">CPFService</span> cpfService;
@@ -278,278 +262,206 @@
             </div>
         </section>
 
-        
+        <!-- CPFService -->
         <section id="cpf">
             <div class="flex items-center gap-3 mb-1">
                 <span class="mono text-xs bg-indigo-900/50 text-indigo-300 px-2 py-1 rounded font-medium">CPF</span>
-                <h2 class="text-xl font-bold text-white">CPFService</h2>
+                <h2 class="text-lg sm:text-xl font-bold text-white">CPFService</h2>
             </div>
             <p class="mono text-xs text-slate-500 mb-4">br.com.sidneyroberto9.utils.cpf</p>
-            <p class="text-slate-400 mb-6">Formatação e validação de CPF. Aceita entrada com ou sem máscara.</p>
+            <p class="text-slate-400 mb-6 text-sm sm:text-base">Formatação e validação de CPF. Aceita entrada com ou sem máscara.</p>
 
-            <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden mb-6">
-                <table class="w-full text-sm searchable-table">
-                    <thead>
-                    <tr class="border-b border-slate-800">
-                        <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">
-                            Método
-                        </th>
-                        <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">
-                            Retorno
-                        </th>
-                        <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">
-                            Descrição
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-800/50">
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-indigo-300 text-xs">format(String cpf)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Formata para <code
-                                class="mono bg-slate-800 px-1 rounded">XXX.XXX.XXX-XX</code>. Aceita dígitos ou
-                            mascarado.
-                        </td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-indigo-300 text-xs">strip(String cpf)</td>
-                        <td class="tag-string mono text-xs px-4 py-3"><span
-                                class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Remove a máscara e retorna apenas os 11 dígitos.
-                        </td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-indigo-300 text-xs">isFormatted(String cpf)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-boolean mono text-xs px-2 py-0.5 rounded-full">boolean</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Verifica se está no padrão <code
-                                class="mono bg-slate-800 px-1 rounded">XXX.XXX.XXX-XX</code>.
-                        </td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-indigo-300 text-xs">isValid(String cpf)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-boolean mono text-xs px-2 py-0.5 rounded-full">boolean</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Valida CPF pelo algoritmo de dígitos verificadores.
-                            Rejeita sequências repetidas.
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+            <div class="bg-slate-900 border border-slate-800 rounded-xl mb-6">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm searchable-table min-w-[520px]">
+                        <thead>
+                        <tr class="border-b border-slate-800">
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Método</th>
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Retorno</th>
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Descrição</th>
+                        </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800/50">
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-indigo-300 text-xs whitespace-nowrap">format(String cpf)</td>
+                            <td class="px-4 py-3"><span class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Formata para <code class="mono bg-slate-800 px-1 rounded">XXX.XXX.XXX-XX</code>. Aceita dígitos ou mascarado.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-indigo-300 text-xs whitespace-nowrap">strip(String cpf)</td>
+                            <td class="px-4 py-3"><span class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Remove a máscara e retorna apenas os 11 dígitos.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-indigo-300 text-xs whitespace-nowrap">isFormatted(String cpf)</td>
+                            <td class="px-4 py-3"><span class="tag-boolean mono text-xs px-2 py-0.5 rounded-full">boolean</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Verifica se está no padrão <code class="mono bg-slate-800 px-1 rounded">XXX.XXX.XXX-XX</code>.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-indigo-300 text-xs whitespace-nowrap">isValid(String cpf)</td>
+                            <td class="px-4 py-3"><span class="tag-boolean mono text-xs px-2 py-0.5 rounded-full">boolean</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Valida CPF pelo algoritmo de dígitos verificadores. Rejeita sequências repetidas.</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
-            <div class="bg-slate-900 border border-slate-800 rounded-xl p-5">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 sm:p-5">
                 <p class="text-xs text-slate-500 mb-3 font-semibold uppercase tracking-wider">Exemplo</p>
-                <pre class="mono text-sm text-slate-300 overflow-x-auto"><span class="text-cyan-300">CPFService</span> cpf = <span
-                        class="text-amber-300">new</span> <span class="text-cyan-300">CPFService</span>();
+                <pre class="mono text-xs sm:text-sm text-slate-300 overflow-x-auto"><span class="text-cyan-300">CPFService</span> cpf = <span class="text-amber-300">new</span> <span class="text-cyan-300">CPFService</span>();
 
-cpf.format(<span class="text-emerald-400">"12345678909"</span>);      <span
-                            class="text-slate-500">// "123.456.789-09"</span>
-cpf.strip(<span class="text-emerald-400">"123.456.789-09"</span>);    <span
-                            class="text-slate-500">// "12345678909"</span>
+cpf.format(<span class="text-emerald-400">"12345678909"</span>);      <span class="text-slate-500">// "123.456.789-09"</span>
+cpf.strip(<span class="text-emerald-400">"123.456.789-09"</span>);    <span class="text-slate-500">// "12345678909"</span>
 cpf.isValid(<span class="text-emerald-400">"12345678909"</span>);     <span class="text-slate-500">// true</span>
 cpf.isValid(<span class="text-emerald-400">"11111111111"</span>);     <span class="text-slate-500">// false — sequência repetida</span>
-cpf.isFormatted(<span class="text-emerald-400">"123.456.789-09"</span>); <span
-                            class="text-slate-500">// true</span></pre>
+cpf.isFormatted(<span class="text-emerald-400">"123.456.789-09"</span>); <span class="text-slate-500">// true</span></pre>
             </div>
         </section>
 
-        
+        <!-- CNPJService -->
         <section id="cnpj">
             <div class="flex items-center gap-3 mb-1">
                 <span class="mono text-xs bg-indigo-900/50 text-indigo-300 px-2 py-1 rounded font-medium">CNPJ</span>
-                <h2 class="text-xl font-bold text-white">CNPJService</h2>
+                <h2 class="text-lg sm:text-xl font-bold text-white">CNPJService</h2>
             </div>
             <p class="mono text-xs text-slate-500 mb-4">br.com.sidneyroberto9.utils.cnpj</p>
-            <p class="text-slate-400 mb-6">Formatação e validação de CNPJ. Aceita entrada com ou sem máscara.</p>
+            <p class="text-slate-400 mb-6 text-sm sm:text-base">Formatação e validação de CNPJ. Aceita entrada com ou sem máscara.</p>
 
-            <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden mb-6">
-                <table class="w-full text-sm searchable-table">
-                    <thead>
-                    <tr class="border-b border-slate-800">
-                        <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">
-                            Método
-                        </th>
-                        <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">
-                            Retorno
-                        </th>
-                        <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">
-                            Descrição
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-800/50">
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-indigo-300 text-xs">format(String cnpj)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Formata para <code
-                                class="mono bg-slate-800 px-1 rounded">XX.XXX.XXX/XXXX-XX</code>.
-                        </td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-indigo-300 text-xs">strip(String cnpj)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Remove a máscara e retorna apenas os 14 dígitos.
-                        </td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-indigo-300 text-xs">isFormatted(String cnpj)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-boolean mono text-xs px-2 py-0.5 rounded-full">boolean</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Verifica se está no padrão <code
-                                class="mono bg-slate-800 px-1 rounded">XX.XXX.XXX/XXXX-XX</code>.
-                        </td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-indigo-300 text-xs">isValid(String cnpj)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-boolean mono text-xs px-2 py-0.5 rounded-full">boolean</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Valida CNPJ pelo algoritmo de dois dígitos
-                            verificadores. Rejeita sequências repetidas.
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+            <div class="bg-slate-900 border border-slate-800 rounded-xl mb-6">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm searchable-table min-w-[520px]">
+                        <thead>
+                        <tr class="border-b border-slate-800">
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Método</th>
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Retorno</th>
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Descrição</th>
+                        </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800/50">
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-indigo-300 text-xs whitespace-nowrap">format(String cnpj)</td>
+                            <td class="px-4 py-3"><span class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Formata para <code class="mono bg-slate-800 px-1 rounded">XX.XXX.XXX/XXXX-XX</code>.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-indigo-300 text-xs whitespace-nowrap">strip(String cnpj)</td>
+                            <td class="px-4 py-3"><span class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Remove a máscara e retorna apenas os 14 dígitos.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-indigo-300 text-xs whitespace-nowrap">isFormatted(String cnpj)</td>
+                            <td class="px-4 py-3"><span class="tag-boolean mono text-xs px-2 py-0.5 rounded-full">boolean</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Verifica se está no padrão <code class="mono bg-slate-800 px-1 rounded">XX.XXX.XXX/XXXX-XX</code>.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-indigo-300 text-xs whitespace-nowrap">isValid(String cnpj)</td>
+                            <td class="px-4 py-3"><span class="tag-boolean mono text-xs px-2 py-0.5 rounded-full">boolean</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Valida CNPJ pelo algoritmo de dois dígitos verificadores. Rejeita sequências repetidas.</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
-            <div class="bg-slate-900 border border-slate-800 rounded-xl p-5">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 sm:p-5">
                 <p class="text-xs text-slate-500 mb-3 font-semibold uppercase tracking-wider">Exemplo</p>
-                <pre class="mono text-sm text-slate-300 overflow-x-auto"><span class="text-cyan-300">CNPJService</span> cnpj = <span
-                        class="text-amber-300">new</span> <span class="text-cyan-300">CNPJService</span>();
+                <pre class="mono text-xs sm:text-sm text-slate-300 overflow-x-auto"><span class="text-cyan-300">CNPJService</span> cnpj = <span class="text-amber-300">new</span> <span class="text-cyan-300">CNPJService</span>();
 
 cnpj.format(<span class="text-emerald-400">"11222333000181"</span>);       <span class="text-slate-500">// "11.222.333/0001-81"</span>
 cnpj.strip(<span class="text-emerald-400">"11.222.333/0001-81"</span>);     <span class="text-slate-500">// "11222333000181"</span>
 cnpj.isValid(<span class="text-emerald-400">"11222333000181"</span>);      <span class="text-slate-500">// true</span>
-cnpj.isFormatted(<span class="text-emerald-400">"11.222.333/0001-81"</span>); <span
-                            class="text-slate-500">// true</span></pre>
+cnpj.isFormatted(<span class="text-emerald-400">"11.222.333/0001-81"</span>); <span class="text-slate-500">// true</span></pre>
             </div>
         </section>
 
-        
+        <!-- PhoneNumberService -->
         <section id="phone">
             <div class="flex items-center gap-3 mb-1">
                 <span class="mono text-xs bg-violet-900/50 text-violet-300 px-2 py-1 rounded font-medium">TEL</span>
-                <h2 class="text-xl font-bold text-white">PhoneNumberService</h2>
+                <h2 class="text-lg sm:text-xl font-bold text-white">PhoneNumberService</h2>
             </div>
             <p class="mono text-xs text-slate-500 mb-4">br.com.sidneyroberto9.utils.phoneNumber</p>
-            <p class="text-slate-400 mb-6">Formatação e validação de números de telefone brasileiros. Detecta
-                automaticamente celular (9 dígitos) e fixo (8 dígitos). Suporta entrada com DDI <code
-                        class="mono bg-slate-800 px-1 rounded text-xs">+55</code>.</p>
+            <p class="text-slate-400 mb-6 text-sm sm:text-base">Formatação e validação de números de telefone brasileiros. Detecta automaticamente celular (9 dígitos) e fixo (8 dígitos). Suporta entrada com DDI <code class="mono bg-slate-800 px-1 rounded text-xs">+55</code>.</p>
 
-            <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden mb-6">
-                <table class="w-full text-sm searchable-table">
-                    <thead>
-                    <tr class="border-b border-slate-800">
-                        <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">
-                            Método
-                        </th>
-                        <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">
-                            Retorno
-                        </th>
-                        <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">
-                            Descrição
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-800/50">
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-violet-300 text-xs">format(String phone)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Formata automaticamente. Detecta celular <code
-                                class="mono bg-slate-800 px-1 rounded">(XX) XXXXX-XXXX</code> e fixo <code
-                                class="mono bg-slate-800 px-1 rounded">(XX) XXXX-XXXX</code>. Trata prefixo <code
-                                class="mono bg-slate-800 px-1 rounded">+55</code>.
-                        </td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-violet-300 text-xs">formatWithCountryCode(String phone)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Formata com DDI: <code
-                                class="mono bg-slate-800 px-1 rounded">+55 (XX) XXXXX-XXXX</code>.
-                        </td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-violet-300 text-xs">strip(String phone)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Remove tudo exceto dígitos.</td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-violet-300 text-xs">getDDD(String phone)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Extrai os 2 dígitos do DDD. Retorna <code
-                                class="mono bg-slate-800 px-1 rounded">null</code> se o número tiver menos de 10
-                            dígitos.
-                        </td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-violet-300 text-xs">isMobile(String phone)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-boolean mono text-xs px-2 py-0.5 rounded-full">boolean</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Verifica se é celular — 9 dígitos locais iniciando
-                            com <code class="mono bg-slate-800 px-1 rounded">9</code>.
-                        </td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-violet-300 text-xs">isLandline(String phone)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-boolean mono text-xs px-2 py-0.5 rounded-full">boolean</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Verifica se é fixo — 8 dígitos locais.</td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-violet-300 text-xs">isFormatted(String phone)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-boolean mono text-xs px-2 py-0.5 rounded-full">boolean</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Verifica se já está no formato com DDD e hífen.
-                        </td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-violet-300 text-xs">isValid(String phone)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-boolean mono text-xs px-2 py-0.5 rounded-full">boolean</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Valida número e DDD contra lista oficial de DDDs
-                            brasileiros.
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+            <div class="bg-slate-900 border border-slate-800 rounded-xl mb-6">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm searchable-table min-w-[540px]">
+                        <thead>
+                        <tr class="border-b border-slate-800">
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Método</th>
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Retorno</th>
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Descrição</th>
+                        </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800/50">
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-violet-300 text-xs whitespace-nowrap">format(String phone)</td>
+                            <td class="px-4 py-3"><span class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Detecta celular <code class="mono bg-slate-800 px-1 rounded">(XX) XXXXX-XXXX</code> e fixo <code class="mono bg-slate-800 px-1 rounded">(XX) XXXX-XXXX</code>. Trata prefixo <code class="mono bg-slate-800 px-1 rounded">+55</code>.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-violet-300 text-xs whitespace-nowrap">formatWithCountryCode(String phone)</td>
+                            <td class="px-4 py-3"><span class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Formata com DDI: <code class="mono bg-slate-800 px-1 rounded">+55 (XX) XXXXX-XXXX</code>.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-violet-300 text-xs whitespace-nowrap">strip(String phone)</td>
+                            <td class="px-4 py-3"><span class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Remove tudo exceto dígitos.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-violet-300 text-xs whitespace-nowrap">getDDD(String phone)</td>
+                            <td class="px-4 py-3"><span class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Extrai os 2 dígitos do DDD. Retorna <code class="mono bg-slate-800 px-1 rounded">null</code> se o número tiver menos de 10 dígitos.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-violet-300 text-xs whitespace-nowrap">isMobile(String phone)</td>
+                            <td class="px-4 py-3"><span class="tag-boolean mono text-xs px-2 py-0.5 rounded-full">boolean</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Verifica se é celular — 9 dígitos locais iniciando com <code class="mono bg-slate-800 px-1 rounded">9</code>.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-violet-300 text-xs whitespace-nowrap">isLandline(String phone)</td>
+                            <td class="px-4 py-3"><span class="tag-boolean mono text-xs px-2 py-0.5 rounded-full">boolean</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Verifica se é fixo — 8 dígitos locais.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-violet-300 text-xs whitespace-nowrap">isFormatted(String phone)</td>
+                            <td class="px-4 py-3"><span class="tag-boolean mono text-xs px-2 py-0.5 rounded-full">boolean</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Verifica se já está no formato com DDD e hífen.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-violet-300 text-xs whitespace-nowrap">isValid(String phone)</td>
+                            <td class="px-4 py-3"><span class="tag-boolean mono text-xs px-2 py-0.5 rounded-full">boolean</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Valida número e DDD contra lista oficial de DDDs brasileiros.</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
-            <div class="bg-slate-900 border border-slate-800 rounded-xl p-5">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 sm:p-5">
                 <p class="text-xs text-slate-500 mb-3 font-semibold uppercase tracking-wider">Exemplo</p>
-                <pre class="mono text-sm text-slate-300 overflow-x-auto"><span
-                        class="text-cyan-300">PhoneNumberService</span> phone = <span class="text-amber-300">new</span> <span
-                        class="text-cyan-300">PhoneNumberService</span>();
+                <pre class="mono text-xs sm:text-sm text-slate-300 overflow-x-auto"><span class="text-cyan-300">PhoneNumberService</span> phone = <span class="text-amber-300">new</span> <span class="text-cyan-300">PhoneNumberService</span>();
 
 phone.format(<span class="text-emerald-400">"83986635812"</span>);              <span class="text-slate-500">// "(83) 98663-5812"</span>
 phone.format(<span class="text-emerald-400">"+5583986635812"</span>);           <span class="text-slate-500">// "(83) 98663-5812"</span>
 phone.formatWithCountryCode(<span class="text-emerald-400">"83986635812"</span>); <span class="text-slate-500">// "+55 (83) 98663-5812"</span>
-phone.getDDD(<span class="text-emerald-400">"83986635812"</span>);              <span
-                            class="text-slate-500">// "83"</span>
-phone.isMobile(<span class="text-emerald-400">"83986635812"</span>);            <span
-                            class="text-slate-500">// true</span>
-phone.isLandline(<span class="text-emerald-400">"8332221234"</span>);           <span
-                            class="text-slate-500">// true</span>
-phone.isValid(<span class="text-emerald-400">"83986635812"</span>);             <span
-                            class="text-slate-500">// true</span></pre>
+phone.getDDD(<span class="text-emerald-400">"83986635812"</span>);              <span class="text-slate-500">// "83"</span>
+phone.isMobile(<span class="text-emerald-400">"83986635812"</span>);            <span class="text-slate-500">// true</span>
+phone.isLandline(<span class="text-emerald-400">"8332221234"</span>);           <span class="text-slate-500">// true</span>
+phone.isValid(<span class="text-emerald-400">"83986635812"</span>);             <span class="text-slate-500">// true</span></pre>
             </div>
         </section>
 
-        
+        <!-- CepService -->
         <section id="cep">
             <div class="flex items-center gap-3 mb-1">
                 <span class="mono text-xs bg-cyan-900/50 text-cyan-300 px-2 py-1 rounded font-medium">CEP</span>
-                <h2 class="text-xl font-bold text-white">CepService</h2>
+                <h2 class="text-lg sm:text-xl font-bold text-white">CepService</h2>
             </div>
             <p class="mono text-xs text-slate-500 mb-4">br.com.sidneyroberto9.utils.cep.domain</p>
-            <p class="text-slate-400 mb-4">Busca de endereço por CEP com estratégia de fallback entre 5 provedores
-                externos. Se um provedor falhar ou não retornar dados, o próximo é tentado automaticamente.</p>
+            <p class="text-slate-400 mb-4 text-sm sm:text-base">Busca de endereço por CEP com estratégia de fallback entre 5 provedores externos. Se um provedor falhar ou não retornar dados, o próximo é tentado automaticamente.</p>
 
             <div class="flex flex-wrap gap-2 mb-6">
                 <span class="text-xs bg-slate-800 border border-slate-700 text-slate-400 px-2.5 py-1 rounded-full mono">ViaCEP</span>
@@ -559,39 +471,30 @@ phone.isValid(<span class="text-emerald-400">"83986635812"</span>);             
                 <span class="text-xs bg-slate-800 border border-slate-700 text-slate-400 px-2.5 py-1 rounded-full mono">Zippopotam</span>
             </div>
 
-            <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden mb-6">
-                <table class="w-full text-sm searchable-table">
-                    <thead>
-                    <tr class="border-b border-slate-800">
-                        <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">
-                            Método
-                        </th>
-                        <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">
-                            Retorno
-                        </th>
-                        <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">
-                            Descrição
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-800/50">
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-cyan-300 text-xs">lookup(String cep)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-object mono text-xs px-2 py-0.5 rounded-full">Address</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Busca o endereço. Se não encontrado em nenhum
-                            provider, retorna <code class="mono bg-slate-800 px-1 rounded">Address</code> com campos
-                            nulos (exceto CEP).
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+            <div class="bg-slate-900 border border-slate-800 rounded-xl mb-6">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm searchable-table min-w-[480px]">
+                        <thead>
+                        <tr class="border-b border-slate-800">
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Método</th>
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Retorno</th>
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Descrição</th>
+                        </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800/50">
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-cyan-300 text-xs whitespace-nowrap">lookup(String cep)</td>
+                            <td class="px-4 py-3"><span class="tag-object mono text-xs px-2 py-0.5 rounded-full">Address</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Busca o endereço. Se não encontrado em nenhum provider, retorna <code class="mono bg-slate-800 px-1 rounded">Address</code> com campos nulos (exceto CEP).</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
-            <div class="bg-slate-900 border border-slate-800 rounded-xl p-5 mb-4">
-                <p class="text-xs text-slate-500 mb-2 font-semibold uppercase tracking-wider">Address — Campos
-                    retornados</p>
-                <div class="grid grid-cols-3 gap-2 mt-3">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 sm:p-5 mb-4">
+                <p class="text-xs text-slate-500 mb-2 font-semibold uppercase tracking-wider">Address — Campos retornados</p>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-3">
                     <span class="mono text-xs text-slate-400 bg-slate-800 px-2 py-1 rounded">uf</span>
                     <span class="mono text-xs text-slate-400 bg-slate-800 px-2 py-1 rounded">cep</span>
                     <span class="mono text-xs text-slate-400 bg-slate-800 px-2 py-1 rounded">district</span>
@@ -608,10 +511,9 @@ phone.isValid(<span class="text-emerald-400">"83986635812"</span>);             
                 </div>
             </div>
 
-            <div class="bg-slate-900 border border-slate-800 rounded-xl p-5">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 sm:p-5">
                 <p class="text-xs text-slate-500 mb-3 font-semibold uppercase tracking-wider">Exemplo</p>
-                <pre class="mono text-sm text-slate-300 overflow-x-auto"><span class="text-cyan-300">CepService</span> cep = <span
-                        class="text-amber-300">new</span> <span class="text-cyan-300">CepService</span>();
+                <pre class="mono text-xs sm:text-sm text-slate-300 overflow-x-auto"><span class="text-cyan-300">CepService</span> cep = <span class="text-amber-300">new</span> <span class="text-cyan-300">CepService</span>();
 <span class="text-cyan-300">Address</span> addr = cep.lookup(<span class="text-emerald-400">"58038-000"</span>);
 
 addr.getStreet();       <span class="text-slate-500">// "Avenida Epitácio Pessoa"</span>
@@ -620,495 +522,365 @@ addr.getUf();           <span class="text-slate-500">// "PB"</span></pre>
             </div>
         </section>
 
-        
+        <!-- CepUtils -->
         <section id="ceputils">
             <div class="flex items-center gap-3 mb-1">
                 <span class="mono text-xs bg-cyan-900/50 text-cyan-300 px-2 py-1 rounded font-medium">CEP</span>
-                <h2 class="text-xl font-bold text-white">CepUtils</h2>
+                <h2 class="text-lg sm:text-xl font-bold text-white">CepUtils</h2>
             </div>
             <p class="mono text-xs text-slate-500 mb-4">br.com.sidneyroberto9.utils.cep.domain</p>
-            <p class="text-slate-400 mb-6">Utilitários de CEP para normalização, validação e formatação sem chamadas
-                externas.</p>
+            <p class="text-slate-400 mb-6 text-sm sm:text-base">Utilitários de CEP para normalização, validação e formatação sem chamadas externas.</p>
 
-            <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden mb-6">
-                <table class="w-full text-sm searchable-table">
-                    <thead>
-                    <tr class="border-b border-slate-800">
-                        <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">
-                            Método
-                        </th>
-                        <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">
-                            Retorno
-                        </th>
-                        <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">
-                            Descrição
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-800/50">
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-cyan-300 text-xs">normalize(String raw)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Remove todos os não-dígitos. Retorna <code
-                                class="mono bg-slate-800 px-1 rounded">null</code> se entrada for nula.
-                        </td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-cyan-300 text-xs">isValid(String cep)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-boolean mono text-xs px-2 py-0.5 rounded-full">boolean</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Verifica se o CEP possui exatamente 8 dígitos.</td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-cyan-300 text-xs">format(String cep)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Formata para <code
-                                class="mono bg-slate-800 px-1 rounded">XXXXX-XXX</code>. Lança <code
-                                class="mono bg-slate-800 px-1 rounded">IllegalArgumentException</code> se inválido.
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+            <div class="bg-slate-900 border border-slate-800 rounded-xl mb-6">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm searchable-table min-w-[480px]">
+                        <thead>
+                        <tr class="border-b border-slate-800">
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Método</th>
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Retorno</th>
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Descrição</th>
+                        </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800/50">
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-cyan-300 text-xs whitespace-nowrap">normalize(String raw)</td>
+                            <td class="px-4 py-3"><span class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Remove todos os não-dígitos. Retorna <code class="mono bg-slate-800 px-1 rounded">null</code> se entrada for nula.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-cyan-300 text-xs whitespace-nowrap">isValid(String cep)</td>
+                            <td class="px-4 py-3"><span class="tag-boolean mono text-xs px-2 py-0.5 rounded-full">boolean</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Verifica se o CEP possui exatamente 8 dígitos.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-cyan-300 text-xs whitespace-nowrap">format(String cep)</td>
+                            <td class="px-4 py-3"><span class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Formata para <code class="mono bg-slate-800 px-1 rounded">XXXXX-XXX</code>. Lança <code class="mono bg-slate-800 px-1 rounded">IllegalArgumentException</code> se inválido.</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </section>
 
-        
+        <!-- DateService -->
         <section id="dateservice">
             <div class="flex items-center gap-3 mb-1">
                 <span class="mono text-xs bg-amber-900/50 text-amber-300 px-2 py-1 rounded font-medium">DT</span>
-                <h2 class="text-xl font-bold text-white">DateService</h2>
+                <h2 class="text-lg sm:text-xl font-bold text-white">DateService</h2>
             </div>
             <p class="mono text-xs text-slate-500 mb-4">br.com.sidneyroberto9.utils.date</p>
-            <p class="text-slate-400 mb-6">Cálculo de dias úteis com calendário nacional brasileiro via <code
-                    class="mono bg-slate-800 px-1 rounded text-xs">jollyday</code>. Suporta <code
-                    class="mono bg-slate-800 px-1 rounded text-xs">LocalDate</code>, <code
-                    class="mono bg-slate-800 px-1 rounded text-xs">LocalDateTime</code> e <code
-                    class="mono bg-slate-800 px-1 rounded text-xs">Date</code>.</p>
+            <p class="text-slate-400 mb-6 text-sm sm:text-base">Cálculo de dias úteis com calendário nacional brasileiro via <code class="mono bg-slate-800 px-1 rounded text-xs">jollyday</code>. Suporta <code class="mono bg-slate-800 px-1 rounded text-xs">LocalDate</code>, <code class="mono bg-slate-800 px-1 rounded text-xs">LocalDateTime</code> e <code class="mono bg-slate-800 px-1 rounded text-xs">Date</code>.</p>
 
-            <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden mb-6">
-                <table class="w-full text-sm searchable-table">
-                    <thead>
-                    <tr class="border-b border-slate-800">
-                        <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">
-                            Método
-                        </th>
-                        <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">
-                            Retorno
-                        </th>
-                        <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">
-                            Descrição
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-800/50">
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-amber-300 text-xs">isHoliday(LocalDate date)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-boolean mono text-xs px-2 py-0.5 rounded-full">boolean</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Verifica se a data é feriado nacional.
-                            Sobrecarregado para <code class="mono bg-slate-800 px-1 rounded">LocalDateTime</code> e
-                            <code class="mono bg-slate-800 px-1 rounded">Date</code>.
-                        </td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-amber-300 text-xs">isBusinessDay(LocalDate date)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-boolean mono text-xs px-2 py-0.5 rounded-full">boolean</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Dia útil = não é feriado e não é fim de semana.
-                        </td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-amber-300 text-xs">addBusinessDays(LocalDate, int days)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-object mono text-xs px-2 py-0.5 rounded-full">LocalDate</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Adiciona <code
-                                class="mono bg-slate-800 px-1 rounded">n</code> dias úteis. Negativo subtrai. Pula
-                            finais de semana e feriados.
-                        </td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-amber-300 text-xs">subtractBusinessDays(LocalDate, int days)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-object mono text-xs px-2 py-0.5 rounded-full">LocalDate</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Subtrai <code
-                                class="mono bg-slate-800 px-1 rounded">n</code> dias úteis da data.
-                        </td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-amber-300 text-xs">adjustToNextBusinessDay(LocalDate)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-object mono text-xs px-2 py-0.5 rounded-full">LocalDate</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Avança para o próximo dia útil se a data não for
-                            dia útil.
-                        </td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-amber-300 text-xs">adjustToPreviousBusinessDay(LocalDate)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-object mono text-xs px-2 py-0.5 rounded-full">LocalDate</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Recua para o dia útil anterior se a data não for
-                            dia útil.
-                        </td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-amber-300 text-xs">getFirstBusinessDayOfMonth(int year, int
-                            month)
-                        </td>
-                        <td class="px-4 py-3"><span
-                                class="tag-object mono text-xs px-2 py-0.5 rounded-full">LocalDate</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Primeiro dia útil do mês.</td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-amber-300 text-xs">getLastBusinessDayOfMonth(int year, int
-                            month)
-                        </td>
-                        <td class="px-4 py-3"><span
-                                class="tag-object mono text-xs px-2 py-0.5 rounded-full">LocalDate</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Último dia útil do mês.</td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-amber-300 text-xs">countBusinessDays(LocalDate from, LocalDate
-                            to)
-                        </td>
-                        <td class="px-4 py-3"><span class="tag-long mono text-xs px-2 py-0.5 rounded-full">long</span>
-                        </td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Conta dias úteis de <code
-                                class="mono bg-slate-800 px-1 rounded">from</code> (inclusive) a <code
-                                class="mono bg-slate-800 px-1 rounded">to</code> (exclusivo).
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+            <div class="bg-slate-900 border border-slate-800 rounded-xl mb-6">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm searchable-table min-w-[560px]">
+                        <thead>
+                        <tr class="border-b border-slate-800">
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Método</th>
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Retorno</th>
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Descrição</th>
+                        </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800/50">
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-amber-300 text-xs whitespace-nowrap">isHoliday(LocalDate date)</td>
+                            <td class="px-4 py-3"><span class="tag-boolean mono text-xs px-2 py-0.5 rounded-full">boolean</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Verifica se a data é feriado nacional. Sobrecarregado para <code class="mono bg-slate-800 px-1 rounded">LocalDateTime</code> e <code class="mono bg-slate-800 px-1 rounded">Date</code>.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-amber-300 text-xs whitespace-nowrap">isBusinessDay(LocalDate date)</td>
+                            <td class="px-4 py-3"><span class="tag-boolean mono text-xs px-2 py-0.5 rounded-full">boolean</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Dia útil = não é feriado e não é fim de semana.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-amber-300 text-xs whitespace-nowrap">addBusinessDays(LocalDate, int days)</td>
+                            <td class="px-4 py-3"><span class="tag-object mono text-xs px-2 py-0.5 rounded-full">LocalDate</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Adiciona <code class="mono bg-slate-800 px-1 rounded">n</code> dias úteis. Negativo subtrai. Pula finais de semana e feriados.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-amber-300 text-xs whitespace-nowrap">subtractBusinessDays(LocalDate, int days)</td>
+                            <td class="px-4 py-3"><span class="tag-object mono text-xs px-2 py-0.5 rounded-full">LocalDate</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Subtrai <code class="mono bg-slate-800 px-1 rounded">n</code> dias úteis da data.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-amber-300 text-xs whitespace-nowrap">adjustToNextBusinessDay(LocalDate)</td>
+                            <td class="px-4 py-3"><span class="tag-object mono text-xs px-2 py-0.5 rounded-full">LocalDate</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Avança para o próximo dia útil se a data não for dia útil.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-amber-300 text-xs whitespace-nowrap">adjustToPreviousBusinessDay(LocalDate)</td>
+                            <td class="px-4 py-3"><span class="tag-object mono text-xs px-2 py-0.5 rounded-full">LocalDate</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Recua para o dia útil anterior se a data não for dia útil.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-amber-300 text-xs whitespace-nowrap">getFirstBusinessDayOfMonth(int year, int month)</td>
+                            <td class="px-4 py-3"><span class="tag-object mono text-xs px-2 py-0.5 rounded-full">LocalDate</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Primeiro dia útil do mês.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-amber-300 text-xs whitespace-nowrap">getLastBusinessDayOfMonth(int year, int month)</td>
+                            <td class="px-4 py-3"><span class="tag-object mono text-xs px-2 py-0.5 rounded-full">LocalDate</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Último dia útil do mês.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-amber-300 text-xs whitespace-nowrap">countBusinessDays(LocalDate from, LocalDate to)</td>
+                            <td class="px-4 py-3"><span class="tag-long mono text-xs px-2 py-0.5 rounded-full">long</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Conta dias úteis de <code class="mono bg-slate-800 px-1 rounded">from</code> (inclusive) a <code class="mono bg-slate-800 px-1 rounded">to</code> (exclusivo).</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
-            <div class="bg-slate-900 border border-slate-800 rounded-xl p-5">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 sm:p-5">
                 <p class="text-xs text-slate-500 mb-3 font-semibold uppercase tracking-wider">Exemplo</p>
-                <pre class="mono text-sm text-slate-300 overflow-x-auto"><span class="text-cyan-300">DateService</span> date = <span
-                        class="text-amber-300">new</span> <span class="text-cyan-300">DateService</span>();
+                <pre class="mono text-xs sm:text-sm text-slate-300 overflow-x-auto"><span class="text-cyan-300">DateService</span> date = <span class="text-amber-300">new</span> <span class="text-cyan-300">DateService</span>();
 <span class="text-cyan-300">LocalDate</span> hoje = <span class="text-cyan-300">LocalDate</span>.now();
 
 date.isBusinessDay(hoje);               <span class="text-slate-500">// true/false</span>
-date.isHoliday(<span class="text-cyan-300">LocalDate</span>.of(<span class="text-emerald-400">2025</span>, <span
-                            class="text-emerald-400">12</span>, <span class="text-emerald-400">25</span>)); <span
-                            class="text-slate-500">// true — Natal</span>
+date.isHoliday(<span class="text-cyan-300">LocalDate</span>.of(<span class="text-emerald-400">2025</span>, <span class="text-emerald-400">12</span>, <span class="text-emerald-400">25</span>)); <span class="text-slate-500">// true — Natal</span>
 date.addBusinessDays(hoje, <span class="text-emerald-400">5</span>);          <span class="text-slate-500">// 5 dias úteis à frente</span>
 date.countBusinessDays(hoje, hoje.plusDays(<span class="text-emerald-400">30</span>)); <span class="text-slate-500">// ~21</span>
-date.getFirstBusinessDayOfMonth(<span class="text-emerald-400">2025</span>, <span
-                            class="text-emerald-400">1</span>); <span class="text-slate-500">// 2025-01-02</span></pre>
+date.getFirstBusinessDayOfMonth(<span class="text-emerald-400">2025</span>, <span class="text-emerald-400">1</span>); <span class="text-slate-500">// 2025-01-02</span></pre>
             </div>
         </section>
 
-        
+        <!-- DateUtils -->
         <section id="dateutils">
             <div class="flex items-center gap-3 mb-1">
                 <span class="mono text-xs bg-amber-900/50 text-amber-300 px-2 py-1 rounded font-medium">DT</span>
-                <h2 class="text-xl font-bold text-white">DateUtils</h2>
+                <h2 class="text-lg sm:text-xl font-bold text-white">DateUtils</h2>
             </div>
             <p class="mono text-xs text-slate-500 mb-4">br.com.sidneyroberto9.utils.date</p>
-            <p class="text-slate-400 mb-6">Conversões entre tipos de data, verificações temporais e formatação. Todos os
-                métodos são sobrecarregados para <code class="mono bg-slate-800 px-1 rounded text-xs">LocalDate</code>,
-                <code class="mono bg-slate-800 px-1 rounded text-xs">LocalDateTime</code> e <code
-                        class="mono bg-slate-800 px-1 rounded text-xs">Date</code>.</p>
+            <p class="text-slate-400 mb-6 text-sm sm:text-base">Conversões entre tipos de data, verificações temporais e formatação. Todos os métodos são sobrecarregados para <code class="mono bg-slate-800 px-1 rounded text-xs">LocalDate</code>, <code class="mono bg-slate-800 px-1 rounded text-xs">LocalDateTime</code> e <code class="mono bg-slate-800 px-1 rounded text-xs">Date</code>.</p>
 
-            <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden mb-6">
-                <table class="w-full text-sm searchable-table">
-                    <thead>
-                    <tr class="border-b border-slate-800">
-                        <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">
-                            Método
-                        </th>
-                        <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">
-                            Retorno
-                        </th>
-                        <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">
-                            Descrição
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-800/50">
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-amber-300 text-xs">toLocalDate(Date date)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-object mono text-xs px-2 py-0.5 rounded-full">LocalDate</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Converte <code
-                                class="mono bg-slate-800 px-1 rounded">Date</code> para <code
-                                class="mono bg-slate-800 px-1 rounded">LocalDate</code> usando timezone do sistema.
-                        </td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-amber-300 text-xs">toLocalDateTime(Date date)</td>
-                        <td class="px-4 py-3"><span class="tag-object mono text-xs px-2 py-0.5 rounded-full">LocalDateTime</span>
-                        </td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Converte <code
-                                class="mono bg-slate-800 px-1 rounded">Date</code> para <code
-                                class="mono bg-slate-800 px-1 rounded">LocalDateTime</code>.
-                        </td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-amber-300 text-xs">toDate(LocalDate date)</td>
-                        <td class="px-4 py-3"><span class="tag-object mono text-xs px-2 py-0.5 rounded-full">Date</span>
-                        </td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Converte <code
-                                class="mono bg-slate-800 px-1 rounded">LocalDate</code> para <code
-                                class="mono bg-slate-800 px-1 rounded">Date</code> no início do dia.
-                        </td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-amber-300 text-xs">isWeekend(LocalDate date)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-boolean mono text-xs px-2 py-0.5 rounded-full">boolean</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Sábado ou domingo.</td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-amber-300 text-xs">isWeekDay(LocalDate date)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-boolean mono text-xs px-2 py-0.5 rounded-full">boolean</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Segunda a sexta.</td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-amber-300 text-xs">isToday(LocalDate date)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-boolean mono text-xs px-2 py-0.5 rounded-full">boolean</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Verifica se a data é hoje.</td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-amber-300 text-xs">isPast(LocalDate date)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-boolean mono text-xs px-2 py-0.5 rounded-full">boolean</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Anterior a hoje.</td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-amber-300 text-xs">isFuture(LocalDate date)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-boolean mono text-xs px-2 py-0.5 rounded-full">boolean</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Posterior a hoje.</td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-amber-300 text-xs">isWithinDateWindow(LocalDate, int start, int
-                            end)
-                        </td>
-                        <td class="px-4 py-3"><span
-                                class="tag-boolean mono text-xs px-2 py-0.5 rounded-full">boolean</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Verifica se o dia do mês está entre <code
-                                class="mono bg-slate-800 px-1 rounded">start</code> e <code
-                                class="mono bg-slate-800 px-1 rounded">end</code>.
-                        </td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-amber-300 text-xs">formatDate(LocalDate date)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Formata para <code
-                                class="mono bg-slate-800 px-1 rounded">dd/MM/yyyy</code>.
-                        </td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-amber-300 text-xs">formatDateTime(LocalDateTime date)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Formata para <code
-                                class="mono bg-slate-800 px-1 rounded">dd/MM/yyyy HH:mm</code>.
-                        </td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-amber-300 text-xs">formatMonthYear(int month, int year)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Formata para <code
-                                class="mono bg-slate-800 px-1 rounded">MM/yyyy</code>.
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+            <div class="bg-slate-900 border border-slate-800 rounded-xl mb-6">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm searchable-table min-w-[520px]">
+                        <thead>
+                        <tr class="border-b border-slate-800">
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Método</th>
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Retorno</th>
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Descrição</th>
+                        </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800/50">
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-amber-300 text-xs whitespace-nowrap">toLocalDate(Date date)</td>
+                            <td class="px-4 py-3"><span class="tag-object mono text-xs px-2 py-0.5 rounded-full">LocalDate</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Converte <code class="mono bg-slate-800 px-1 rounded">Date</code> para <code class="mono bg-slate-800 px-1 rounded">LocalDate</code> usando timezone do sistema.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-amber-300 text-xs whitespace-nowrap">toLocalDateTime(Date date)</td>
+                            <td class="px-4 py-3"><span class="tag-object mono text-xs px-2 py-0.5 rounded-full">LocalDateTime</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Converte <code class="mono bg-slate-800 px-1 rounded">Date</code> para <code class="mono bg-slate-800 px-1 rounded">LocalDateTime</code>.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-amber-300 text-xs whitespace-nowrap">toDate(LocalDate date)</td>
+                            <td class="px-4 py-3"><span class="tag-object mono text-xs px-2 py-0.5 rounded-full">Date</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Converte <code class="mono bg-slate-800 px-1 rounded">LocalDate</code> para <code class="mono bg-slate-800 px-1 rounded">Date</code> no início do dia.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-amber-300 text-xs whitespace-nowrap">isWeekend(LocalDate date)</td>
+                            <td class="px-4 py-3"><span class="tag-boolean mono text-xs px-2 py-0.5 rounded-full">boolean</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Sábado ou domingo.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-amber-300 text-xs whitespace-nowrap">isWeekDay(LocalDate date)</td>
+                            <td class="px-4 py-3"><span class="tag-boolean mono text-xs px-2 py-0.5 rounded-full">boolean</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Segunda a sexta.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-amber-300 text-xs whitespace-nowrap">isToday(LocalDate date)</td>
+                            <td class="px-4 py-3"><span class="tag-boolean mono text-xs px-2 py-0.5 rounded-full">boolean</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Verifica se a data é hoje.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-amber-300 text-xs whitespace-nowrap">isPast(LocalDate date)</td>
+                            <td class="px-4 py-3"><span class="tag-boolean mono text-xs px-2 py-0.5 rounded-full">boolean</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Anterior a hoje.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-amber-300 text-xs whitespace-nowrap">isFuture(LocalDate date)</td>
+                            <td class="px-4 py-3"><span class="tag-boolean mono text-xs px-2 py-0.5 rounded-full">boolean</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Posterior a hoje.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-amber-300 text-xs whitespace-nowrap">isWithinDateWindow(LocalDate, int start, int end)</td>
+                            <td class="px-4 py-3"><span class="tag-boolean mono text-xs px-2 py-0.5 rounded-full">boolean</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Verifica se o dia do mês está entre <code class="mono bg-slate-800 px-1 rounded">start</code> e <code class="mono bg-slate-800 px-1 rounded">end</code>.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-amber-300 text-xs whitespace-nowrap">formatDate(LocalDate date)</td>
+                            <td class="px-4 py-3"><span class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Formata para <code class="mono bg-slate-800 px-1 rounded">dd/MM/yyyy</code>.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-amber-300 text-xs whitespace-nowrap">formatDateTime(LocalDateTime date)</td>
+                            <td class="px-4 py-3"><span class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Formata para <code class="mono bg-slate-800 px-1 rounded">dd/MM/yyyy HH:mm</code>.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-amber-300 text-xs whitespace-nowrap">formatMonthYear(int month, int year)</td>
+                            <td class="px-4 py-3"><span class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Formata para <code class="mono bg-slate-800 px-1 rounded">MM/yyyy</code>.</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </section>
 
-        
+        <!-- StringUtils -->
         <section id="string">
             <div class="flex items-center gap-3 mb-1">
                 <span class="mono text-xs bg-emerald-900/50 text-emerald-300 px-2 py-1 rounded font-medium">STR</span>
-                <h2 class="text-xl font-bold text-white">StringUtils</h2>
+                <h2 class="text-lg sm:text-xl font-bold text-white">StringUtils</h2>
             </div>
             <p class="mono text-xs text-slate-500 mb-4">br.com.sidneyroberto9.utils.strings</p>
-            <p class="text-slate-400 mb-6">Manipulação de strings com suporte a português: capitalização com conectivos,
-                slugification, remoção de acentos e operações com e-mail.</p>
+            <p class="text-slate-400 mb-6 text-sm sm:text-base">Manipulação de strings com suporte a português: capitalização com conectivos, slugification, remoção de acentos e operações com e-mail.</p>
 
-            <div class="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden mb-6">
-                <table class="w-full text-sm searchable-table">
-                    <thead>
-                    <tr class="border-b border-slate-800">
-                        <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">
-                            Método
-                        </th>
-                        <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">
-                            Retorno
-                        </th>
-                        <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">
-                            Descrição
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-800/50">
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-emerald-300 text-xs">isBlank(String value)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-boolean mono text-xs px-2 py-0.5 rounded-full">boolean</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Null-safe. <code
-                                class="mono bg-slate-800 px-1 rounded">true</code> se nulo, vazio ou só espaços.
-                        </td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-emerald-300 text-xs">isNotBlank(String value)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-boolean mono text-xs px-2 py-0.5 rounded-full">boolean</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Inverso de <code
-                                class="mono bg-slate-800 px-1 rounded">isBlank</code>.
-                        </td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-emerald-300 text-xs">trimOrNull(String value)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Trim, retorna <code
-                                class="mono bg-slate-800 px-1 rounded">null</code> se blank.
-                        </td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-emerald-300 text-xs">requireNonBlank(String, String message)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Lança <code class="mono bg-slate-800 px-1 rounded">IllegalArgumentException</code>
-                            se blank.
-                        </td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-emerald-300 text-xs">capitalize(String word)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Primeira letra maiúscula, restante minúsculo.</td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-emerald-300 text-xs">capitalizeWords(String fullName)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Capitaliza cada palavra. Conectivos em PT-BR (<code
-                                class="mono bg-slate-800 px-1 rounded">de</code>, <code
-                                class="mono bg-slate-800 px-1 rounded">da</code>, <code
-                                class="mono bg-slate-800 px-1 rounded">do</code>...) ficam em minúsculo.
-                        </td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-emerald-300 text-xs">firstTwoNames(String fullName)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Extrai e capitaliza os dois primeiros nomes.</td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-emerald-300 text-xs">digitsOnly(String input)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Remove tudo exceto dígitos 0-9.</td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-emerald-300 text-xs">alphanumericOnly(String input)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Remove tudo exceto letras e números
-                            (Unicode-aware).
-                        </td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-emerald-300 text-xs">removeAccents(String input)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Remove acentuação via normalização NFD.</td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-emerald-300 text-xs">slugify(String input)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Gera slug URL-friendly: lowercase, sem acento,
-                            espaços → hífens.
-                        </td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-emerald-300 text-xs">truncate(String value, int maxLength)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Trunca em <code
-                                class="mono bg-slate-800 px-1 rounded">maxLength</code> chars sem quebrar palavras.
-                        </td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-emerald-300 text-xs">containsIgnoreCase(String text, String
-                            search)
-                        </td>
-                        <td class="px-4 py-3"><span
-                                class="tag-boolean mono text-xs px-2 py-0.5 rounded-full">boolean</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Busca case-insensitive. Null-safe.</td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-emerald-300 text-xs">normalizeEmail(String email)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Trim + lowercase.</td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-emerald-300 text-xs">emailDomain(String email)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Extrai o domínio em uppercase: <code
-                                class="mono bg-slate-800 px-1 rounded">user@gmail.com</code> → <code
-                                class="mono bg-slate-800 px-1 rounded">GMAIL</code>.
-                        </td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-emerald-300 text-xs">maskEmail(String email)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">Mascara o email: <code
-                                class="mono bg-slate-800 px-1 rounded">u***@gmail.com</code>.
-                        </td>
-                    </tr>
-                    <tr class="method-row transition-colors">
-                        <td class="px-4 py-3 mono text-emerald-300 text-xs">encodeUrl(String baseUrl, String text)</td>
-                        <td class="px-4 py-3"><span
-                                class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
-                        <td class="px-4 py-3 text-slate-400 text-xs">URL-encoda o texto e concatena à URL base.</td>
-                    </tr>
-                    </tbody>
-                </table>
+            <div class="bg-slate-900 border border-slate-800 rounded-xl mb-6">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm searchable-table min-w-[540px]">
+                        <thead>
+                        <tr class="border-b border-slate-800">
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Método</th>
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Retorno</th>
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Descrição</th>
+                        </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800/50">
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-emerald-300 text-xs whitespace-nowrap">isBlank(String value)</td>
+                            <td class="px-4 py-3"><span class="tag-boolean mono text-xs px-2 py-0.5 rounded-full">boolean</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Null-safe. <code class="mono bg-slate-800 px-1 rounded">true</code> se nulo, vazio ou só espaços.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-emerald-300 text-xs whitespace-nowrap">isNotBlank(String value)</td>
+                            <td class="px-4 py-3"><span class="tag-boolean mono text-xs px-2 py-0.5 rounded-full">boolean</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Inverso de <code class="mono bg-slate-800 px-1 rounded">isBlank</code>.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-emerald-300 text-xs whitespace-nowrap">trimOrNull(String value)</td>
+                            <td class="px-4 py-3"><span class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Trim, retorna <code class="mono bg-slate-800 px-1 rounded">null</code> se blank.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-emerald-300 text-xs whitespace-nowrap">requireNonBlank(String, String message)</td>
+                            <td class="px-4 py-3"><span class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Lança <code class="mono bg-slate-800 px-1 rounded">IllegalArgumentException</code> se blank.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-emerald-300 text-xs whitespace-nowrap">capitalize(String word)</td>
+                            <td class="px-4 py-3"><span class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Primeira letra maiúscula, restante minúsculo.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-emerald-300 text-xs whitespace-nowrap">capitalizeWords(String fullName)</td>
+                            <td class="px-4 py-3"><span class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Capitaliza cada palavra. Conectivos em PT-BR (<code class="mono bg-slate-800 px-1 rounded">de</code>, <code class="mono bg-slate-800 px-1 rounded">da</code>, <code class="mono bg-slate-800 px-1 rounded">do</code>...) ficam em minúsculo.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-emerald-300 text-xs whitespace-nowrap">firstTwoNames(String fullName)</td>
+                            <td class="px-4 py-3"><span class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Extrai e capitaliza os dois primeiros nomes.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-emerald-300 text-xs whitespace-nowrap">digitsOnly(String input)</td>
+                            <td class="px-4 py-3"><span class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Remove tudo exceto dígitos 0-9.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-emerald-300 text-xs whitespace-nowrap">alphanumericOnly(String input)</td>
+                            <td class="px-4 py-3"><span class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Remove tudo exceto letras e números (Unicode-aware).</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-emerald-300 text-xs whitespace-nowrap">removeAccents(String input)</td>
+                            <td class="px-4 py-3"><span class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Remove acentuação via normalização NFD.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-emerald-300 text-xs whitespace-nowrap">slugify(String input)</td>
+                            <td class="px-4 py-3"><span class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Gera slug URL-friendly: lowercase, sem acento, espaços → hífens.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-emerald-300 text-xs whitespace-nowrap">truncate(String value, int maxLength)</td>
+                            <td class="px-4 py-3"><span class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Trunca em <code class="mono bg-slate-800 px-1 rounded">maxLength</code> chars sem quebrar palavras.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-emerald-300 text-xs whitespace-nowrap">containsIgnoreCase(String text, String search)</td>
+                            <td class="px-4 py-3"><span class="tag-boolean mono text-xs px-2 py-0.5 rounded-full">boolean</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Busca case-insensitive. Null-safe.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-emerald-300 text-xs whitespace-nowrap">normalizeEmail(String email)</td>
+                            <td class="px-4 py-3"><span class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Trim + lowercase.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-emerald-300 text-xs whitespace-nowrap">emailDomain(String email)</td>
+                            <td class="px-4 py-3"><span class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Extrai o domínio em uppercase: <code class="mono bg-slate-800 px-1 rounded">user@gmail.com</code> → <code class="mono bg-slate-800 px-1 rounded">GMAIL</code>.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-emerald-300 text-xs whitespace-nowrap">maskEmail(String email)</td>
+                            <td class="px-4 py-3"><span class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Mascara o email: <code class="mono bg-slate-800 px-1 rounded">u***@gmail.com</code>.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-emerald-300 text-xs whitespace-nowrap">encodeUrl(String baseUrl, String text)</td>
+                            <td class="px-4 py-3"><span class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">URL-encoda o texto e concatena à URL base.</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
-            <div class="bg-slate-900 border border-slate-800 rounded-xl p-5">
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 sm:p-5">
                 <p class="text-xs text-slate-500 mb-3 font-semibold uppercase tracking-wider">Exemplo</p>
-                <pre class="mono text-sm text-slate-300 overflow-x-auto"><span class="text-cyan-300">StringUtils</span> str = <span
-                        class="text-amber-300">new</span> <span class="text-cyan-300">StringUtils</span>();
+                <pre class="mono text-xs sm:text-sm text-slate-300 overflow-x-auto"><span class="text-cyan-300">StringUtils</span> str = <span class="text-amber-300">new</span> <span class="text-cyan-300">StringUtils</span>();
 
 str.capitalizeWords(<span class="text-emerald-400">"joão da silva"</span>);   <span class="text-slate-500">// "João da Silva"</span>
-str.slugify(<span class="text-emerald-400">"Olá Mundo!"</span>);             <span
-                            class="text-slate-500">// "ola-mundo"</span>
-str.removeAccents(<span class="text-emerald-400">"café"</span>);            <span
-                            class="text-slate-500">// "cafe"</span>
+str.slugify(<span class="text-emerald-400">"Olá Mundo!"</span>);             <span class="text-slate-500">// "ola-mundo"</span>
+str.removeAccents(<span class="text-emerald-400">"café"</span>);            <span class="text-slate-500">// "cafe"</span>
 str.maskEmail(<span class="text-emerald-400">"usuario@gmail.com"</span>);   <span class="text-slate-500">// "u***@gmail.com"</span>
 str.firstTwoNames(<span class="text-emerald-400">"João da Silva Souza"</span>); <span class="text-slate-500">// "João Da"</span>
-str.truncate(<span class="text-emerald-400">"texto longo"</span>, <span class="text-emerald-400">5</span>);       <span
-                            class="text-slate-500">// "texto"</span></pre>
+str.truncate(<span class="text-emerald-400">"texto longo"</span>, <span class="text-emerald-400">5</span>);       <span class="text-slate-500">// "texto"</span></pre>
             </div>
         </section>
 
         <footer class="border-t border-slate-800 pt-8 pb-16 text-center text-xs text-slate-600">
-            utils-java · MIT License · <a class="hover:text-slate-400 transition"
-                                          href="https://github.com/sidneyroberto9">sidneyroberto9</a>
+            utils-java · MIT License · <a class="hover:text-slate-400 transition" href="https://github.com/sidneyroberto9">sidneyroberto9</a>
         </footer>
 
     </div>
 </main>
 
 <script>
+    // Sidebar toggle
+    function openSidebar() {
+        document.getElementById('sidebar').classList.add('open');
+        document.getElementById('backdrop').classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
+    function closeSidebar() {
+        document.getElementById('sidebar').classList.remove('open');
+        document.getElementById('backdrop').classList.remove('open');
+        document.body.style.overflow = '';
+    }
 
+    // Close sidebar on lg+ resize
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 1024) closeSidebar();
+    });
+
+    // Active nav on scroll
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
 
@@ -1120,23 +892,23 @@ str.truncate(<span class="text-emerald-400">"texto longo"</span>, <span class="t
                 if (active) active.classList.add('active');
             }
         });
-    }, {rootMargin: '-30% 0px -60% 0px'});
+    }, { rootMargin: '-30% 0px -60% 0px' });
 
     sections.forEach(s => observer.observe(s));
 
-
-    function search() {
+    // Search
+    function filterSearch() {
         const q = document.getElementById('search').value.toLowerCase();
         document.querySelectorAll('.searchable-table tbody tr').forEach(row => {
             row.style.display = row.textContent.toLowerCase().includes(q) ? '' : 'none';
         });
     }
 
-
+    // Card scroll
     document.querySelectorAll('.service-card').forEach(card => {
         card.addEventListener('click', () => {
             const href = card.getAttribute('href');
-            document.querySelector(href)?.scrollIntoView({behavior: 'smooth'});
+            document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' });
         });
     });
 </script>
