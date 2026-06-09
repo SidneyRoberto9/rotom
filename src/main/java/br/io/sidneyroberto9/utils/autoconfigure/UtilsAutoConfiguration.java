@@ -8,11 +8,11 @@ import br.io.sidneyroberto9.utils.date.DateService;
 import br.io.sidneyroberto9.utils.date.DateUtils;
 import br.io.sidneyroberto9.utils.phoneNumber.PhoneNumberService;
 import br.io.sidneyroberto9.utils.strings.StringUtils;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
-@Configuration
+@AutoConfiguration
 public class UtilsAutoConfiguration {
 
     @Bean
