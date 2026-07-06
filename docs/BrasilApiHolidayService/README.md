@@ -4,9 +4,7 @@ Pacote: `io.github.sidneyroberto9.rotom.date.holiday`
 Arquivo: `src/main/java/io/github/sidneyroberto9/rotom/date/holiday/BrasilApiHolidayService.java`
 
 Serviço para buscar feriados nacionais brasileiros de um ano específico via a
-[BrasilAPI](https://brasilapi.com.br/docs#tag/Feriados-Nacionais) pública. Introduzido na v1.1.0 a
-partir de `HolidayService` (modulo-rh) do m4all, reimplementado **5 vezes com nomes diferentes**
-em ~6 projetos (ver [`docs/AUDIT.md`](../AUDIT.md)).
+[BrasilAPI](https://brasilapi.com.br/docs#tag/Feriados-Nacionais) pública. Introduzido na v1.1.0.
 
 > Diferente de [`DateService`](../DateService/README.md), que usa o calendário offline **jollyday**
 > (sem chamadas de rede), este serviço faz uma **chamada HTTP em tempo real** a cada invocação e

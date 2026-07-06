@@ -3,8 +3,7 @@
 Pacote: `io.github.sidneyroberto9.rotom.validation`
 Arquivo: `src/main/java/io/github/sidneyroberto9/rotom/validation/NumberUtils.java`
 
-Utilitário para verificar se uma string representa um número válido. Introduzido na v1.1.0 a
-partir de `NumberUtils` do m4all (ver [`docs/AUDIT.md`](../AUDIT.md)).
+Utilitário para verificar se uma string representa um número válido. Introduzido na v1.1.0.
 
 ## Construtor
 

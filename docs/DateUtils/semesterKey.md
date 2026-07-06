@@ -3,8 +3,7 @@
 **Pacote:** `io.github.sidneyroberto9.rotom.date`
 **Arquivo:** `DateUtils.java`
 
-*Introduzido na v1.1.0*, a partir de `SemesterUtil.currentSemesterKey` do m4all
-(ver [`docs/AUDIT.md`](../AUDIT.md)).
+*Introduzido na v1.1.0*.
 
 ## Descrição
 

@@ -4,8 +4,7 @@ Pacote: `io.github.sidneyroberto9.rotom.mask`
 Arquivo: `src/main/java/io/github/sidneyroberto9/rotom/mask/MaskUtils.java`
 
 Utilitário para mascarar números de documento sensíveis, para exibição amigável à LGPD.
-Introduzido na v1.1.0 a partir de `LgpdMaskUtil.maskCpf/maskCnpj` do m4all
-(ver [`docs/AUDIT.md`](../AUDIT.md)). Diferente de [`CPFService`](../CPFService/README.md) e
+Introduzido na v1.1.0. Diferente de [`CPFService`](../CPFService/README.md) e
 [`CNPJService`](../CNPJService/README.md), que apenas aplicam a máscara padrão de pontuação, os
 métodos aqui **ocultam a maior parte dos dígitos**.
 

@@ -4,8 +4,7 @@ Pacote: `io.github.sidneyroberto9.rotom.sms`
 Arquivo: `src/main/java/io/github/sidneyroberto9/rotom/sms/Gsm7Converter.java`
 
 Utilitário para converter texto UTF-8 para o alfabeto padrão GSM 7-bit usado em corpos de SMS.
-Introduzido na v1.1.0 a partir de `Utf8ToGsm7ConverterService`, duplicado em 8+ projetos do m4all
-(ver [`docs/AUDIT.md`](../AUDIT.md)).
+Introduzido na v1.1.0.
 
 ## Construtor
 

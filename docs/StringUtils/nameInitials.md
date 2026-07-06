@@ -3,7 +3,7 @@
 **Pacote:** `io.github.sidneyroberto9.rotom.strings`
 **Arquivo:** `StringUtils.java`
 
-*Introduzido na v1.1.0*, a partir de `NameInitials.of` do m4all (ver [`docs/AUDIT.md`](../AUDIT.md)).
+*Introduzido na v1.1.0*.
 
 ## Descrição
 

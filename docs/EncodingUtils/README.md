@@ -3,9 +3,7 @@
 Pacote: `io.github.sidneyroberto9.rotom.encoding`
 Arquivo: `src/main/java/io/github/sidneyroberto9/rotom/encoding/EncodingUtils.java`
 
-Utilitário para codificação/decodificação Base64 de strings e inteiros. Introduzido na v1.1.0 a
-partir de `EncodeService.toBase64/fromBase64` + `Base64Encoder.encode/decode` do m4all
-(ver [`docs/AUDIT.md`](../AUDIT.md)).
+Utilitário para codificação/decodificação Base64 de strings e inteiros. Introduzido na v1.1.0.
 
 ## Construtor
 

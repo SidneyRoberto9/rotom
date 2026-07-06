@@ -4,9 +4,7 @@ Pacote: `io.github.sidneyroberto9.rotom.random`
 Arquivo: `src/main/java/io/github/sidneyroberto9/rotom/random/RandomUtil.java`
 
 Utilitário para geração de números, strings, tokens e API keys aleatórios. Baseado em
-`SecureRandom` (aleatoriedade criptograficamente forte). Introduzido na v1.1.0 a partir da
-auditoria do monorepo m4all (`RandomUtil` + `EncodeService.generateRandomCode` +
-`PasswordUtil.getToken` + `ApiKeyGenerator`, ver [`docs/AUDIT.md`](../AUDIT.md)).
+`SecureRandom` (aleatoriedade criptograficamente forte). Introduzido na v1.1.0.
 
 ## Construtor
 

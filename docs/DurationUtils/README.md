@@ -4,10 +4,8 @@ Pacote: `io.github.sidneyroberto9.rotom.date`
 Arquivo: `src/main/java/io/github/sidneyroberto9/rotom/date/DurationUtils.java`
 
 Utilitário para calcular e descrever a duração entre dois instantes, com saída legível em
-português. Introduzido na v1.1.0 a partir de `TimeDifference` do m4all
-(ver [`docs/AUDIT.md`](../AUDIT.md)), **corrigindo** um bug de limite: o original usava `> 60`
-minutos e `> 24` horas como corte (então exatamente 60 minutos virava `"60 minutos"` em vez de
-`"1 hora(s) e 0 minuto(s)"`); aqui os limites são `>= 60`/`>= 24`.
+português. Introduzido na v1.1.0. Os limites de corte são `>= 60` minutos e `>= 24` horas, de
+modo que exatamente 60 minutos vira `"1 hora(s) e 0 minuto(s)"` em vez de `"60 minutos"`.
 
 ## Construtor
 

@@ -4,11 +4,9 @@ Pacote: `io.github.sidneyroberto9.rotom.io`
 Arquivo: `src/main/java/io/github/sidneyroberto9/rotom/io/FileUtils.java`
 
 Utilitário para operações comuns de arquivo: codificação Base64, formatação de tamanho legível e
-movimentação de arquivos para o diretório de trabalho. Introduzido na v1.1.0 a partir de
-`FileUtil.encoder` + `UtilFormats.formatSize` + `FileUtil.moveFileToWorkspace` do m4all
-(ver [`docs/AUDIT.md`](../AUDIT.md)). **Reimplementação enxuta**: usa `java.nio.file` para mover
-arquivos (o original dependia da lib Google Guava para isso) e não força extensão `.pdf` no
-destino (o original sempre anexava `.pdf`, independente do tipo real do arquivo).
+movimentação de arquivos para o diretório de trabalho. Introduzido na v1.1.0. Usa
+`java.nio.file` para mover arquivos (sem depender do Google Guava) e não força extensão `.pdf`
+no destino.
 
 ## Construtor
 

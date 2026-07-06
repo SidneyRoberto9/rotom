@@ -4,10 +4,8 @@ Pacote: `io.github.sidneyroberto9.rotom.hash`
 Arquivo: `src/main/java/io/github/sidneyroberto9/rotom/hash/HashUtils.java`
 
 Utilitário para cálculo de hashes criptográficos (checksums) de bytes, strings, streams e
-arquivos. Introduzido na v1.1.0 a partir de `HashCheckSumUtil` do m4all
-(ver [`docs/AUDIT.md`](../AUDIT.md)), **corrigindo** dois problemas do original: `System.exit(0)`
-em caso de arquivo não encontrado (removido — agora propaga `IOException`) e `FileInputStream`
-nunca fechado (agora usa try-with-resources).
+arquivos. Introduzido na v1.1.0. Em caso de arquivo não encontrado propaga `IOException` (sem
+`System.exit(0)`) e usa try-with-resources para fechar o `FileInputStream`.
 
 ## Construtor
 

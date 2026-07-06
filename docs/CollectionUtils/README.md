@@ -3,9 +3,8 @@
 Pacote: `io.github.sidneyroberto9.rotom.collections`
 Arquivo: `src/main/java/io/github/sidneyroberto9/rotom/collections/CollectionUtils.java`
 
-Utilitário para operações comuns de coleção. Introduzido na v1.1.0 a partir de
-`ArrayUtil.removeDuplicates` do m4all (ver [`docs/AUDIT.md`](../AUDIT.md)), **reescrito** com
-`LinkedHashSet` (O(n)) no lugar do laço aninhado O(n²) original.
+Utilitário para operações comuns de coleção. Introduzido na v1.1.0, usa
+`LinkedHashSet` (O(n)) para deduplicação em vez de laço aninhado O(n²).
 
 ## Construtor
 

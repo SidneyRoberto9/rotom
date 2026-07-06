@@ -4,7 +4,7 @@ Pacote: `io.github.sidneyroberto9.rotom.money`
 Arquivo: `src/main/java/io/github/sidneyroberto9/rotom/money/MoneyUtils.java`
 
 Utilitário para formatação de valores monetários como moeda brasileira (BRL). Introduzido na
-v1.1.0 a partir de `MoedaUtil.formatarMoeda` do m4all (ver [`docs/AUDIT.md`](../AUDIT.md)).
+v1.1.0.
 
 ## Construtor
 

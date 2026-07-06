@@ -3,8 +3,7 @@
 **Pacote:** `io.github.sidneyroberto9.rotom.strings`
 **Arquivo:** `StringUtils.java`
 
-*Introduzido na v1.1.0*, versão limpa de `StringFormatUtil.emptyStringOrOnlySpace(value,
-defaultValue)` do m4all (ver [`docs/AUDIT.md`](../AUDIT.md)).
+*Introduzido na v1.1.0*.
 
 ## Descrição
 
