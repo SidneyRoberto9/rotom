@@ -4,8 +4,6 @@ Documentação detalhada, por método, de todos os serviços públicos da biblio
 sua própria pasta com um `README.md` de visão geral e um arquivo `.md` por método.
 
 Para a visão geral navegável (página única, estilo site) veja [`index.html`](index.html).
-Para a auditoria de utilitários candidatos encontrados no monorepo `m4all`, veja
-[`AUDIT.md`](AUDIT.md).
 
 ## Documentos (CPF / CNPJ)
 
