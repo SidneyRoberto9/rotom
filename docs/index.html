@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>utils-java — Documentação</title>
+    <title>Rotom — Documentação</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com" rel="preconnect"/>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
@@ -124,9 +124,9 @@
         <div>
             <div class="flex items-center gap-2 mb-1">
                 <div class="w-2 h-2 rounded-full bg-indigo-500"></div>
-                <h1 class="text-white font-bold text-base tracking-tight">utils-java</h1>
+                <h1 class="text-white font-bold text-base tracking-tight">Rotom</h1>
             </div>
-            <span class="mono text-xs text-slate-500">v1.0.0 · Java 11</span>
+            <span class="mono text-xs text-slate-500">v1.1.0 · Java 11</span>
         </div>
         <button class="lg:hidden text-slate-500 hover:text-slate-300 p-1" onclick="closeSidebar()">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -161,6 +161,11 @@
             <span class="mono text-xs bg-violet-900/50 text-violet-300 px-1.5 py-0.5 rounded">TEL</span>
             PhoneNumberService
         </a>
+        <a class="nav-link flex items-center gap-2 px-3 py-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-800"
+           href="#gsm7" onclick="closeSidebar()">
+            <span class="mono text-xs bg-violet-900/50 text-violet-300 px-1.5 py-0.5 rounded">SMS</span>
+            Gsm7Converter
+        </a>
 
         <div class="pt-3 pb-1 px-3">
             <span class="text-xs font-semibold uppercase tracking-wider text-slate-600">Localização</span>
@@ -185,6 +190,14 @@
            href="#dateutils" onclick="closeSidebar()">
             <span class="mono text-xs bg-amber-900/50 text-amber-300 px-1.5 py-0.5 rounded">DT</span> DateUtils
         </a>
+        <a class="nav-link flex items-center gap-2 px-3 py-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-800"
+           href="#durationutils" onclick="closeSidebar()">
+            <span class="mono text-xs bg-amber-900/50 text-amber-300 px-1.5 py-0.5 rounded">DUR</span> DurationUtils
+        </a>
+        <a class="nav-link flex items-center gap-2 px-3 py-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-800"
+           href="#holidayservice" onclick="closeSidebar()">
+            <span class="mono text-xs bg-amber-900/50 text-amber-300 px-1.5 py-0.5 rounded">HOL</span> BrasilApiHolidayService
+        </a>
 
         <div class="pt-3 pb-1 px-3">
             <span class="text-xs font-semibold uppercase tracking-wider text-slate-600">Texto</span>
@@ -193,15 +206,79 @@
            href="#string" onclick="closeSidebar()">
             <span class="mono text-xs bg-emerald-900/50 text-emerald-300 px-1.5 py-0.5 rounded">STR</span> StringUtils
         </a>
+
+        <div class="pt-3 pb-1 px-3">
+            <span class="text-xs font-semibold uppercase tracking-wider text-slate-600">Aleatoriedade &amp; Codificação</span>
+        </div>
+        <a class="nav-link flex items-center gap-2 px-3 py-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-800"
+           href="#randomutil" onclick="closeSidebar()">
+            <span class="mono text-xs bg-rose-900/50 text-rose-300 px-1.5 py-0.5 rounded">RND</span> RandomUtil
+        </a>
+        <a class="nav-link flex items-center gap-2 px-3 py-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-800"
+           href="#encodingutils" onclick="closeSidebar()">
+            <span class="mono text-xs bg-rose-900/50 text-rose-300 px-1.5 py-0.5 rounded">B64</span> EncodingUtils
+        </a>
+        <a class="nav-link flex items-center gap-2 px-3 py-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-800"
+           href="#hashutils" onclick="closeSidebar()">
+            <span class="mono text-xs bg-rose-900/50 text-rose-300 px-1.5 py-0.5 rounded">HASH</span> HashUtils
+        </a>
+
+        <div class="pt-3 pb-1 px-3">
+            <span class="text-xs font-semibold uppercase tracking-wider text-slate-600">Validação</span>
+        </div>
+        <a class="nav-link flex items-center gap-2 px-3 py-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-800"
+           href="#emailvalidator" onclick="closeSidebar()">
+            <span class="mono text-xs bg-sky-900/50 text-sky-300 px-1.5 py-0.5 rounded">MAIL</span> EmailValidator
+        </a>
+        <a class="nav-link flex items-center gap-2 px-3 py-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-800"
+           href="#passwordvalidator" onclick="closeSidebar()">
+            <span class="mono text-xs bg-sky-900/50 text-sky-300 px-1.5 py-0.5 rounded">PWD</span> PasswordValidator
+        </a>
+        <a class="nav-link flex items-center gap-2 px-3 py-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-800"
+           href="#numberutils" onclick="closeSidebar()">
+            <span class="mono text-xs bg-sky-900/50 text-sky-300 px-1.5 py-0.5 rounded">NUM</span> NumberUtils
+        </a>
+
+        <div class="pt-3 pb-1 px-3">
+            <span class="text-xs font-semibold uppercase tracking-wider text-slate-600">Formatação &amp; Arquivos</span>
+        </div>
+        <a class="nav-link flex items-center gap-2 px-3 py-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-800"
+           href="#moneyutils" onclick="closeSidebar()">
+            <span class="mono text-xs bg-lime-900/50 text-lime-300 px-1.5 py-0.5 rounded">R$</span> MoneyUtils
+        </a>
+        <a class="nav-link flex items-center gap-2 px-3 py-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-800"
+           href="#maskutils" onclick="closeSidebar()">
+            <span class="mono text-xs bg-lime-900/50 text-lime-300 px-1.5 py-0.5 rounded">MASK</span> MaskUtils
+        </a>
+        <a class="nav-link flex items-center gap-2 px-3 py-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-800"
+           href="#fileutils" onclick="closeSidebar()">
+            <span class="mono text-xs bg-lime-900/50 text-lime-300 px-1.5 py-0.5 rounded">FILE</span> FileUtils
+        </a>
+
+        <div class="pt-3 pb-1 px-3">
+            <span class="text-xs font-semibold uppercase tracking-wider text-slate-600">Coleções</span>
+        </div>
+        <a class="nav-link flex items-center gap-2 px-3 py-2 rounded-md text-slate-400 hover:text-white hover:bg-slate-800"
+           href="#collectionutils" onclick="closeSidebar()">
+            <span class="mono text-xs bg-fuchsia-900/50 text-fuchsia-300 px-1.5 py-0.5 rounded">COL</span> CollectionUtils
+        </a>
     </nav>
 
     <div class="p-4 border-t border-slate-800">
         <a class="flex items-center gap-2 text-xs text-slate-500 hover:text-slate-300 transition"
-           href="https://github.com/sidneyroberto9/utils-java" target="_blank">
+           href="https://github.com/SidneyRoberto9/rotom" target="_blank">
             <svg class="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
             </svg>
-            sidneyroberto9/utils-java
+            SidneyRoberto9/rotom
+        </a>
+        <a class="flex items-center gap-2 text-xs text-slate-500 hover:text-slate-300 transition mt-2"
+           href="README.md">
+            <span class="text-slate-600">#</span> Docs por método
+        </a>
+        <a class="flex items-center gap-2 text-xs text-slate-500 hover:text-slate-300 transition mt-2"
+           href="AUDIT.md">
+            <span class="text-slate-600">#</span> Auditoria m4all
         </a>
     </div>
 </aside>
@@ -218,13 +295,13 @@
                 </svg>
             </button>
             <div class="hidden sm:flex items-center gap-2 sm:gap-3 min-w-0 text-slate-500">
-                <span class="mono text-xs truncate">com.github.sidneyroberto9</span>
+                <span class="mono text-xs truncate">io.github.sidneyroberto9</span>
                 <span class="text-slate-700">/</span>
-                <span class="mono text-xs text-slate-400">utils</span>
+                <span class="mono text-xs text-slate-400">rotom</span>
                 <span class="text-slate-700">/</span>
-                <span class="mono text-xs">1.0.0</span>
+                <span class="mono text-xs">1.1.0</span>
             </div>
-            <span class="sm:hidden mono text-xs text-slate-400 font-semibold">utils-java</span>
+            <span class="sm:hidden mono text-xs text-slate-400 font-semibold">Rotom</span>
         </div>
         <div class="flex items-center gap-2 shrink-0">
             <input class="mono text-xs bg-slate-800 border border-slate-700 text-slate-300 rounded-lg px-3 py-1.5 w-36 sm:w-48 focus:outline-none focus:border-indigo-500 placeholder-slate-600"
@@ -240,6 +317,10 @@
             <p class="text-slate-400 mb-6 leading-relaxed text-sm sm:text-base">
                 Biblioteca utilitária para operações brasileiras — validação e formatação de documentos, lookup de CEP
                 com múltiplos providers, cálculo de dias úteis com calendário nacional e utilidades de string.
+                Na <strong class="text-slate-300">v1.1.0</strong>, 13 novos utilitários foram incorporados a partir de
+                uma auditoria do monorepo m4all (aleatoriedade/IDs, codificação, hash, SMS GSM-7, validação de
+                e-mail/senha/número, moeda BRL, máscara LGPD, arquivos e coleções) — veja o
+                <a class="text-indigo-300 hover:underline" href="AUDIT.md">relatório de auditoria completo</a>.
             </p>
 
             <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 sm:p-5 mb-6">
@@ -248,9 +329,9 @@
 <span class="text-slate-500">&lt;dependency&gt;</span>
   <span class="text-slate-500">&lt;groupId&gt;</span><span class="text-indigo-400">io.github.sidneyroberto9</span><span
                             class="text-slate-500">&lt;/groupId&gt;</span>
-  <span class="text-slate-500">&lt;artifactId&gt;</span><span class="text-indigo-400">utils</span><span
+  <span class="text-slate-500">&lt;artifactId&gt;</span><span class="text-indigo-400">rotom</span><span
                             class="text-slate-500">&lt;/artifactId&gt;</span>
-  <span class="text-slate-500">&lt;version&gt;</span><span class="text-emerald-400">1.0.4</span><span
+  <span class="text-slate-500">&lt;version&gt;</span><span class="text-emerald-400">1.1.0</span><span
                             class="text-slate-500">&lt;/version&gt;</span>
 <span class="text-slate-500">&lt;/dependency&gt;</span></pre>
             </div>
@@ -305,6 +386,123 @@
                     </div>
                     <p class="text-slate-500 text-xs">Manipulação de strings com suporte a português e e-mail.</p>
                 </a>
+                <a class="service-card group bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-rose-500/40 rounded-xl p-4 transition cursor-pointer"
+                   href="#randomutil">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="mono text-xs bg-rose-900/50 text-rose-300 px-2 py-0.5 rounded font-medium">RND</span>
+                        <span class="text-white font-medium text-sm group-hover:text-rose-300 transition">RandomUtil</span>
+                        <span class="mono text-[10px] text-slate-600">v1.1.0</span>
+                    </div>
+                    <p class="text-slate-500 text-xs">Números, strings, tokens e API keys aleatórias.</p>
+                </a>
+                <a class="service-card group bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-rose-500/40 rounded-xl p-4 transition cursor-pointer"
+                   href="#encodingutils">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="mono text-xs bg-rose-900/50 text-rose-300 px-2 py-0.5 rounded font-medium">B64</span>
+                        <span class="text-white font-medium text-sm group-hover:text-rose-300 transition">EncodingUtils</span>
+                        <span class="mono text-[10px] text-slate-600">v1.1.0</span>
+                    </div>
+                    <p class="text-slate-500 text-xs">Base64 de texto e inteiros (ofuscação de IDs).</p>
+                </a>
+                <a class="service-card group bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-rose-500/40 rounded-xl p-4 transition cursor-pointer"
+                   href="#hashutils">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="mono text-xs bg-rose-900/50 text-rose-300 px-2 py-0.5 rounded font-medium">HASH</span>
+                        <span class="text-white font-medium text-sm group-hover:text-rose-300 transition">HashUtils</span>
+                        <span class="mono text-[10px] text-slate-600">v1.1.0</span>
+                    </div>
+                    <p class="text-slate-500 text-xs">MD5/SHA-256/SHA-512 de bytes, strings, streams e arquivos.</p>
+                </a>
+                <a class="service-card group bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-violet-500/40 rounded-xl p-4 transition cursor-pointer"
+                   href="#gsm7">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="mono text-xs bg-violet-900/50 text-violet-300 px-2 py-0.5 rounded font-medium">SMS</span>
+                        <span class="text-white font-medium text-sm group-hover:text-violet-300 transition">Gsm7Converter</span>
+                        <span class="mono text-[10px] text-slate-600">v1.1.0</span>
+                    </div>
+                    <p class="text-slate-500 text-xs">Converte texto UTF-8 para o alfabeto GSM 7-bit de SMS.</p>
+                </a>
+                <a class="service-card group bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-sky-500/40 rounded-xl p-4 transition cursor-pointer"
+                   href="#emailvalidator">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="mono text-xs bg-sky-900/50 text-sky-300 px-2 py-0.5 rounded font-medium">MAIL</span>
+                        <span class="text-white font-medium text-sm group-hover:text-sky-300 transition">EmailValidator</span>
+                        <span class="mono text-[10px] text-slate-600">v1.1.0</span>
+                    </div>
+                    <p class="text-slate-500 text-xs">Validação estrutural de e-mail via regex.</p>
+                </a>
+                <a class="service-card group bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-sky-500/40 rounded-xl p-4 transition cursor-pointer"
+                   href="#passwordvalidator">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="mono text-xs bg-sky-900/50 text-sky-300 px-2 py-0.5 rounded font-medium">PWD</span>
+                        <span class="text-white font-medium text-sm group-hover:text-sky-300 transition">PasswordValidator</span>
+                        <span class="mono text-[10px] text-slate-600">v1.1.0</span>
+                    </div>
+                    <p class="text-slate-500 text-xs">Verifica força de senha (8-16 chars, categorias exigidas).</p>
+                </a>
+                <a class="service-card group bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-sky-500/40 rounded-xl p-4 transition cursor-pointer"
+                   href="#numberutils">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="mono text-xs bg-sky-900/50 text-sky-300 px-2 py-0.5 rounded font-medium">NUM</span>
+                        <span class="text-white font-medium text-sm group-hover:text-sky-300 transition">NumberUtils</span>
+                        <span class="mono text-[10px] text-slate-600">v1.1.0</span>
+                    </div>
+                    <p class="text-slate-500 text-xs">Verifica se uma string é um número válido.</p>
+                </a>
+                <a class="service-card group bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-lime-500/40 rounded-xl p-4 transition cursor-pointer"
+                   href="#moneyutils">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="mono text-xs bg-lime-900/50 text-lime-300 px-2 py-0.5 rounded font-medium">R$</span>
+                        <span class="text-white font-medium text-sm group-hover:text-lime-300 transition">MoneyUtils</span>
+                        <span class="mono text-[10px] text-slate-600">v1.1.0</span>
+                    </div>
+                    <p class="text-slate-500 text-xs">Formatação de valores como moeda brasileira (BRL).</p>
+                </a>
+                <a class="service-card group bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-lime-500/40 rounded-xl p-4 transition cursor-pointer"
+                   href="#maskutils">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="mono text-xs bg-lime-900/50 text-lime-300 px-2 py-0.5 rounded font-medium">MASK</span>
+                        <span class="text-white font-medium text-sm group-hover:text-lime-300 transition">MaskUtils</span>
+                        <span class="mono text-[10px] text-slate-600">v1.1.0</span>
+                    </div>
+                    <p class="text-slate-500 text-xs">Máscara LGPD de exibição de CPF/CNPJ.</p>
+                </a>
+                <a class="service-card group bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-lime-500/40 rounded-xl p-4 transition cursor-pointer"
+                   href="#fileutils">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="mono text-xs bg-lime-900/50 text-lime-300 px-2 py-0.5 rounded font-medium">FILE</span>
+                        <span class="text-white font-medium text-sm group-hover:text-lime-300 transition">FileUtils</span>
+                        <span class="mono text-[10px] text-slate-600">v1.1.0</span>
+                    </div>
+                    <p class="text-slate-500 text-xs">Base64 de arquivo, tamanho legível, mover para workspace.</p>
+                </a>
+                <a class="service-card group bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-amber-500/40 rounded-xl p-4 transition cursor-pointer"
+                   href="#durationutils">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="mono text-xs bg-amber-900/50 text-amber-300 px-2 py-0.5 rounded font-medium">DUR</span>
+                        <span class="text-white font-medium text-sm group-hover:text-amber-300 transition">DurationUtils</span>
+                        <span class="mono text-[10px] text-slate-600">v1.1.0</span>
+                    </div>
+                    <p class="text-slate-500 text-xs">Duração entre datas em texto legível, em português.</p>
+                </a>
+                <a class="service-card group bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-amber-500/40 rounded-xl p-4 transition cursor-pointer"
+                   href="#holidayservice">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="mono text-xs bg-amber-900/50 text-amber-300 px-2 py-0.5 rounded font-medium">HOL</span>
+                        <span class="text-white font-medium text-sm group-hover:text-amber-300 transition">BrasilApiHolidayService</span>
+                        <span class="mono text-[10px] text-slate-600">v1.1.0</span>
+                    </div>
+                    <p class="text-slate-500 text-xs">Feriados nacionais via BrasilAPI (online, sem cache).</p>
+                </a>
+                <a class="service-card group bg-slate-900 hover:bg-slate-800 border border-slate-800 hover:border-fuchsia-500/40 rounded-xl p-4 transition cursor-pointer"
+                   href="#collectionutils">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="mono text-xs bg-fuchsia-900/50 text-fuchsia-300 px-2 py-0.5 rounded font-medium">COL</span>
+                        <span class="text-white font-medium text-sm group-hover:text-fuchsia-300 transition">CollectionUtils</span>
+                        <span class="mono text-[10px] text-slate-600">v1.1.0</span>
+                    </div>
+                    <p class="text-slate-500 text-xs">Remove duplicatas de lista preservando ordem.</p>
+                </a>
             </div>
 
             <div class="mt-6 bg-slate-900 border border-slate-800 rounded-xl p-4 sm:p-5">
@@ -330,7 +528,7 @@
                 <span class="mono text-xs bg-indigo-900/50 text-indigo-300 px-2 py-1 rounded font-medium">CPF</span>
                 <h2 class="text-lg sm:text-xl font-bold text-white">CPFService</h2>
             </div>
-            <p class="mono text-xs text-slate-500 mb-4">br.io.sidneyroberto9.utils.cpf</p>
+            <p class="mono text-xs text-slate-500 mb-4">io.github.sidneyroberto9.rotom.cpf</p>
             <p class="text-slate-400 mb-6 text-sm sm:text-base">Formatação e validação de CPF. Aceita entrada com ou sem
                 máscara.</p>
 
@@ -414,7 +612,7 @@ cpf.isFormatted(<span class="text-emerald-400">"123.456.789-09"</span>); <span
                 <span class="mono text-xs bg-indigo-900/50 text-indigo-300 px-2 py-1 rounded font-medium">CNPJ</span>
                 <h2 class="text-lg sm:text-xl font-bold text-white">CNPJService</h2>
             </div>
-            <p class="mono text-xs text-slate-500 mb-4">br.io.sidneyroberto9.utils.cnpj</p>
+            <p class="mono text-xs text-slate-500 mb-4">io.github.sidneyroberto9.rotom.cnpj</p>
             <p class="text-slate-400 mb-6 text-sm sm:text-base">Formatação e validação de CNPJ. Aceita entrada com ou
                 sem máscara.</p>
 
@@ -495,7 +693,7 @@ cnpj.isFormatted(<span class="text-emerald-400">"11.222.333/0001-81"</span>); <s
                 <span class="mono text-xs bg-violet-900/50 text-violet-300 px-2 py-1 rounded font-medium">TEL</span>
                 <h2 class="text-lg sm:text-xl font-bold text-white">PhoneNumberService</h2>
             </div>
-            <p class="mono text-xs text-slate-500 mb-4">br.io.sidneyroberto9.utils.phoneNumber</p>
+            <p class="mono text-xs text-slate-500 mb-4">io.github.sidneyroberto9.rotom.phoneNumber</p>
             <p class="text-slate-400 mb-6 text-sm sm:text-base">Formatação e validação de números de telefone
                 brasileiros. Detecta automaticamente celular (9 dígitos) e fixo (8 dígitos). Suporta entrada com DDI
                 <code class="mono bg-slate-800 px-1 rounded text-xs">+55</code>.</p>
@@ -622,7 +820,7 @@ phone.isValid(<span class="text-emerald-400">"83986635812"</span>);             
                 <span class="mono text-xs bg-cyan-900/50 text-cyan-300 px-2 py-1 rounded font-medium">CEP</span>
                 <h2 class="text-lg sm:text-xl font-bold text-white">CepService</h2>
             </div>
-            <p class="mono text-xs text-slate-500 mb-4">br.io.sidneyroberto9.utils.cep.domain</p>
+            <p class="mono text-xs text-slate-500 mb-4">io.github.sidneyroberto9.rotom.cep.domain</p>
             <p class="text-slate-400 mb-4 text-sm sm:text-base">Busca de endereço por CEP com estratégia de fallback
                 entre 5 provedores externos. Se um provedor falhar ou não retornar dados, o próximo é tentado
                 automaticamente.</p>
@@ -672,17 +870,17 @@ phone.isValid(<span class="text-emerald-400">"83986635812"</span>);             
                 <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-3">
                     <span class="mono text-xs text-slate-400 bg-slate-800 px-2 py-1 rounded">uf</span>
                     <span class="mono text-xs text-slate-400 bg-slate-800 px-2 py-1 rounded">cep</span>
-                    <span class="mono text-xs text-slate-400 bg-slate-800 px-2 py-1 rounded">district</span>
-                    <span class="mono text-xs text-slate-400 bg-slate-800 px-2 py-1 rounded">municipality</span>
-                    <span class="mono text-xs text-slate-400 bg-slate-800 px-2 py-1 rounded">street</span>
-                    <span class="mono text-xs text-slate-400 bg-slate-800 px-2 py-1 rounded">complement</span>
+                    <span class="mono text-xs text-slate-400 bg-slate-800 px-2 py-1 rounded">bairro</span>
+                    <span class="mono text-xs text-slate-400 bg-slate-800 px-2 py-1 rounded">localidade</span>
+                    <span class="mono text-xs text-slate-400 bg-slate-800 px-2 py-1 rounded">logradouro</span>
+                    <span class="mono text-xs text-slate-400 bg-slate-800 px-2 py-1 rounded">complemento</span>
                     <span class="mono text-xs text-slate-400 bg-slate-800 px-2 py-1 rounded">ibge</span>
                     <span class="mono text-xs text-slate-400 bg-slate-800 px-2 py-1 rounded">gia</span>
                     <span class="mono text-xs text-slate-400 bg-slate-800 px-2 py-1 rounded">ddd</span>
                     <span class="mono text-xs text-slate-400 bg-slate-800 px-2 py-1 rounded">siafi</span>
-                    <span class="mono text-xs text-slate-400 bg-slate-800 px-2 py-1 rounded">unit</span>
-                    <span class="mono text-xs text-slate-400 bg-slate-800 px-2 py-1 rounded">state</span>
-                    <span class="mono text-xs text-slate-400 bg-slate-800 px-2 py-1 rounded">region</span>
+                    <span class="mono text-xs text-slate-400 bg-slate-800 px-2 py-1 rounded">unidade</span>
+                    <span class="mono text-xs text-slate-400 bg-slate-800 px-2 py-1 rounded">estado</span>
+                    <span class="mono text-xs text-slate-400 bg-slate-800 px-2 py-1 rounded">regiao</span>
                 </div>
             </div>
 
@@ -692,9 +890,9 @@ phone.isValid(<span class="text-emerald-400">"83986635812"</span>);             
                         class="text-amber-300">new</span> <span class="text-cyan-300">CepService</span>();
 <span class="text-cyan-300">Address</span> addr = cep.lookup(<span class="text-emerald-400">"58038-000"</span>);
 
-addr.getStreet();       <span class="text-slate-500">// "Avenida Epitácio Pessoa"</span>
-addr.getMunicipality(); <span class="text-slate-500">// "João Pessoa"</span>
-addr.getUf();           <span class="text-slate-500">// "PB"</span></pre>
+addr.getLogradouro();  <span class="text-slate-500">// "Avenida Epitácio Pessoa"</span>
+addr.getLocalidade();  <span class="text-slate-500">// "João Pessoa"</span>
+addr.getUf();          <span class="text-slate-500">// "PB"</span></pre>
             </div>
         </section>
 
@@ -704,7 +902,7 @@ addr.getUf();           <span class="text-slate-500">// "PB"</span></pre>
                 <span class="mono text-xs bg-cyan-900/50 text-cyan-300 px-2 py-1 rounded font-medium">CEP</span>
                 <h2 class="text-lg sm:text-xl font-bold text-white">CepUtils</h2>
             </div>
-            <p class="mono text-xs text-slate-500 mb-4">br.io.sidneyroberto9.utils.cep.domain</p>
+            <p class="mono text-xs text-slate-500 mb-4">io.github.sidneyroberto9.rotom.cep.domain</p>
             <p class="text-slate-400 mb-6 text-sm sm:text-base">Utilitários de CEP para normalização, validação e
                 formatação sem chamadas externas.</p>
 
@@ -763,7 +961,7 @@ addr.getUf();           <span class="text-slate-500">// "PB"</span></pre>
                 <span class="mono text-xs bg-amber-900/50 text-amber-300 px-2 py-1 rounded font-medium">DT</span>
                 <h2 class="text-lg sm:text-xl font-bold text-white">DateService</h2>
             </div>
-            <p class="mono text-xs text-slate-500 mb-4">br.io.sidneyroberto9.utils.date</p>
+            <p class="mono text-xs text-slate-500 mb-4">io.github.sidneyroberto9.rotom.date</p>
             <p class="text-slate-400 mb-6 text-sm sm:text-base">Cálculo de dias úteis com calendário nacional brasileiro
                 via <code class="mono bg-slate-800 px-1 rounded text-xs">jollyday</code>. Suporta <code
                         class="mono bg-slate-800 px-1 rounded text-xs">LocalDate</code>, <code
@@ -904,12 +1102,19 @@ date.getFirstBusinessDayOfMonth(<span class="text-emerald-400">2025</span>, <spa
                 <span class="mono text-xs bg-amber-900/50 text-amber-300 px-2 py-1 rounded font-medium">DT</span>
                 <h2 class="text-lg sm:text-xl font-bold text-white">DateUtils</h2>
             </div>
-            <p class="mono text-xs text-slate-500 mb-4">br.io.sidneyroberto9.utils.date</p>
+            <p class="mono text-xs text-slate-500 mb-4">io.github.sidneyroberto9.rotom.date</p>
             <p class="text-slate-400 mb-6 text-sm sm:text-base">Conversões entre tipos de data, verificações temporais e
-                formatação. Todos os métodos são sobrecarregados para <code
+                formatação. A maioria dos métodos é sobrecarregada para <code
                         class="mono bg-slate-800 px-1 rounded text-xs">LocalDate</code>, <code
                         class="mono bg-slate-800 px-1 rounded text-xs">LocalDateTime</code> e <code
-                        class="mono bg-slate-800 px-1 rounded text-xs">Date</code>.</p>
+                        class="mono bg-slate-800 px-1 rounded text-xs">Date</code> — exceto
+                <code class="mono bg-slate-800 px-1 rounded text-xs">isPast</code>/<code
+                        class="mono bg-slate-800 px-1 rounded text-xs">isFuture</code> (sem overload
+                <code class="mono bg-slate-800 px-1 rounded text-xs">Date</code>) e <code
+                        class="mono bg-slate-800 px-1 rounded text-xs">formatDateTime</code> (sem overload
+                <code class="mono bg-slate-800 px-1 rounded text-xs">LocalDate</code>). Veja a
+                <a class="text-amber-300 hover:underline" href="DateUtils/README.md">documentação por método</a>
+                para os detalhes de cada assinatura.</p>
 
             <div class="bg-slate-900 border border-slate-800 rounded-xl mb-6">
                 <div class="overflow-x-auto">
@@ -1039,6 +1244,18 @@ date.getFirstBusinessDayOfMonth(<span class="text-emerald-400">2025</span>, <spa
                                     class="mono bg-slate-800 px-1 rounded">MM/yyyy</code>.
                             </td>
                         </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-amber-300 text-xs whitespace-nowrap">semesterKey(LocalDate
+                                date)
+                            </td>
+                            <td class="px-4 py-3"><span
+                                    class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Chave de semestre: <code
+                                    class="mono bg-slate-800 px-1 rounded">yyyy-01</code> (jan–mai) ou <code
+                                    class="mono bg-slate-800 px-1 rounded">yyyy-06</code> (jun–dez).
+                                <span class="mono text-[10px] text-slate-600">v1.1.0</span>
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>
@@ -1051,7 +1268,7 @@ date.getFirstBusinessDayOfMonth(<span class="text-emerald-400">2025</span>, <spa
                 <span class="mono text-xs bg-emerald-900/50 text-emerald-300 px-2 py-1 rounded font-medium">STR</span>
                 <h2 class="text-lg sm:text-xl font-bold text-white">StringUtils</h2>
             </div>
-            <p class="mono text-xs text-slate-500 mb-4">br.io.sidneyroberto9.utils.strings</p>
+            <p class="mono text-xs text-slate-500 mb-4">io.github.sidneyroberto9.rotom.strings</p>
             <p class="text-slate-400 mb-6 text-sm sm:text-base">Manipulação de strings com suporte a português:
                 capitalização com conectivos, slugification, remoção de acentos e operações com e-mail.</p>
 
@@ -1233,6 +1450,51 @@ date.getFirstBusinessDayOfMonth(<span class="text-emerald-400">2025</span>, <spa
                                     class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
                             <td class="px-4 py-3 text-slate-400 text-xs">URL-encoda o texto e concatena à URL base.</td>
                         </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-emerald-300 text-xs whitespace-nowrap">
+                                toCamelCaseWithSpaces(String input)
+                            </td>
+                            <td class="px-4 py-3"><span
+                                    class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Camel case com espaços: <code
+                                    class="mono bg-slate-800 px-1 rounded">"HELLO WORLD"</code> → <code
+                                    class="mono bg-slate-800 px-1 rounded">"Hello World"</code>.
+                                <span class="mono text-[10px] text-slate-600">v1.1.0</span>
+                            </td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-emerald-300 text-xs whitespace-nowrap">nameInitials(String
+                                fullName)
+                            </td>
+                            <td class="px-4 py-3"><span
+                                    class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Iniciais estilo avatar (1ª + última palavra),
+                                ou <code class="mono bg-slate-800 px-1 rounded">"?"</code> se blank.
+                                <span class="mono text-[10px] text-slate-600">v1.1.0</span>
+                            </td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-emerald-300 text-xs whitespace-nowrap">
+                                formatElevenDigits(String input)
+                            </td>
+                            <td class="px-4 py-3"><span
+                                    class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Formata 11 dígitos como <code
+                                    class="mono bg-slate-800 px-1 rounded">SS.T.RRRRRRR-D</code>.
+                                <span class="mono text-[10px] text-slate-600">v1.1.0</span>
+                            </td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-emerald-300 text-xs whitespace-nowrap">
+                                defaultIfBlank(String value, String defaultValue)
+                            </td>
+                            <td class="px-4 py-3"><span
+                                    class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Retorna o valor aparado ou o default se
+                                blank.
+                                <span class="mono text-[10px] text-slate-600">v1.1.0</span>
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
                 </div>
@@ -1251,13 +1513,652 @@ str.removeAccents(<span class="text-emerald-400">"café"</span>);            <sp
 str.maskEmail(<span class="text-emerald-400">"usuario@gmail.com"</span>);   <span class="text-slate-500">// "u***@gmail.com"</span>
 str.firstTwoNames(<span class="text-emerald-400">"João da Silva Souza"</span>); <span class="text-slate-500">// "João Da"</span>
 str.truncate(<span class="text-emerald-400">"texto longo"</span>, <span class="text-emerald-400">5</span>);       <span
-                            class="text-slate-500">// "texto"</span></pre>
+                            class="text-slate-500">// "texto"</span>
+str.nameInitials(<span class="text-emerald-400">"João Silva"</span>);        <span class="text-slate-500">// "JS"</span>
+str.defaultIfBlank(<span class="text-emerald-400">"   "</span>, <span class="text-emerald-400">"N/A"</span>);       <span
+                            class="text-slate-500">// "N/A"</span></pre>
+            </div>
+        </section>
+
+        <!-- RandomUtil -->
+        <section id="randomutil">
+            <div class="flex items-center gap-3 mb-1">
+                <span class="mono text-xs bg-rose-900/50 text-rose-300 px-2 py-1 rounded font-medium">RND</span>
+                <h2 class="text-lg sm:text-xl font-bold text-white">RandomUtil</h2>
+                <span class="mono text-[10px] text-slate-600">v1.1.0</span>
+            </div>
+            <p class="mono text-xs text-slate-500 mb-4">io.github.sidneyroberto9.rotom.random</p>
+            <p class="text-slate-400 mb-6 text-sm sm:text-base">Geração de números, strings, tokens e API keys
+                aleatórias, com <code class="mono bg-slate-800 px-1 rounded text-xs">SecureRandom</code>.</p>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-xl mb-6">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm searchable-table min-w-[520px]">
+                        <thead>
+                        <tr class="border-b border-slate-800">
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Método</th>
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Retorno</th>
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Descrição</th>
+                        </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800/50">
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-rose-300 text-xs whitespace-nowrap">randomInt(int min, int max)</td>
+                            <td class="px-4 py-3"><span class="tag-long mono text-xs px-2 py-0.5 rounded-full">int</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Inteiro aleatório em <code class="mono bg-slate-800 px-1 rounded">[min, max]</code>.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-rose-300 text-xs whitespace-nowrap">randomAlphanumeric(int size)</td>
+                            <td class="px-4 py-3"><span class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">String aleatória A-Z0-9 do tamanho informado.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-rose-300 text-xs whitespace-nowrap">randomNumeric(int size)</td>
+                            <td class="px-4 py-3"><span class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">String aleatória só com dígitos.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-rose-300 text-xs whitespace-nowrap">randomCode(int size)</td>
+                            <td class="px-4 py-3"><span class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Alias de <code class="mono bg-slate-800 px-1 rounded">randomAlphanumeric</code>, para códigos de verificação.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-rose-300 text-xs whitespace-nowrap">token(int limit)</td>
+                            <td class="px-4 py-3"><span class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Token truncado de UUID sem hífens (1–32 chars).</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-rose-300 text-xs whitespace-nowrap">apiKey() / apiKey(String prefix)</td>
+                            <td class="px-4 py-3"><span class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">API key com prefixo (padrão <code class="mono bg-slate-800 px-1 rounded">sk_live_</code>) + 12 chars hex.</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 sm:p-5">
+                <p class="text-xs text-slate-500 mb-3 font-semibold uppercase tracking-wider">Exemplo</p>
+                <pre class="mono text-xs sm:text-sm text-slate-300 overflow-x-auto"><span class="text-cyan-300">RandomUtil</span> random = <span class="text-amber-300">new</span> <span class="text-cyan-300">RandomUtil</span>();
+
+random.randomInt(<span class="text-emerald-400">1</span>, <span class="text-emerald-400">10</span>);       <span class="text-slate-500">// inteiro entre 1 e 10</span>
+random.randomAlphanumeric(<span class="text-emerald-400">8</span>);  <span class="text-slate-500">// "K3P9XZ2Q"</span>
+random.token(<span class="text-emerald-400">10</span>);              <span class="text-slate-500">// "a3f2b7c8d9"</span>
+random.apiKey();                <span class="text-slate-500">// "sk_live_a3f2b7c8d901"</span></pre>
+            </div>
+        </section>
+
+        <!-- EncodingUtils -->
+        <section id="encodingutils">
+            <div class="flex items-center gap-3 mb-1">
+                <span class="mono text-xs bg-rose-900/50 text-rose-300 px-2 py-1 rounded font-medium">B64</span>
+                <h2 class="text-lg sm:text-xl font-bold text-white">EncodingUtils</h2>
+                <span class="mono text-[10px] text-slate-600">v1.1.0</span>
+            </div>
+            <p class="mono text-xs text-slate-500 mb-4">io.github.sidneyroberto9.rotom.encoding</p>
+            <p class="text-slate-400 mb-6 text-sm sm:text-base">Codificação/decodificação Base64 de texto e
+                inteiros, útil para ofuscar IDs sequenciais.</p>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-xl mb-6">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm searchable-table min-w-[480px]">
+                        <thead>
+                        <tr class="border-b border-slate-800">
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Método</th>
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Retorno</th>
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Descrição</th>
+                        </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800/50">
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-rose-300 text-xs whitespace-nowrap">toBase64(String input)</td>
+                            <td class="px-4 py-3"><span class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Codifica texto (UTF-8) para Base64.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-rose-300 text-xs whitespace-nowrap">fromBase64(String base64)</td>
+                            <td class="px-4 py-3"><span class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Decodifica Base64 de volta a texto.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-rose-300 text-xs whitespace-nowrap">encodeInt(int value)</td>
+                            <td class="px-4 py-3"><span class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Codifica inteiro (4 bytes big-endian) em Base64.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-rose-300 text-xs whitespace-nowrap">decodeInt(String encoded)</td>
+                            <td class="px-4 py-3"><span class="tag-long mono text-xs px-2 py-0.5 rounded-full">int</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Decodifica de volta ao inteiro original.</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 sm:p-5">
+                <p class="text-xs text-slate-500 mb-3 font-semibold uppercase tracking-wider">Exemplo</p>
+                <pre class="mono text-xs sm:text-sm text-slate-300 overflow-x-auto"><span class="text-cyan-300">EncodingUtils</span> encoding = <span class="text-amber-300">new</span> <span class="text-cyan-300">EncodingUtils</span>();
+
+encoding.toBase64(<span class="text-emerald-400">"hello world"</span>);  <span class="text-slate-500">// "aGVsbG8gd29ybGQ="</span>
+encoding.encodeInt(<span class="text-emerald-400">42</span>);            <span class="text-slate-500">// "AAAAKg=="</span>
+encoding.decodeInt(<span class="text-emerald-400">"AAAAKg=="</span>);    <span class="text-slate-500">// 42</span></pre>
+            </div>
+        </section>
+
+        <!-- HashUtils -->
+        <section id="hashutils">
+            <div class="flex items-center gap-3 mb-1">
+                <span class="mono text-xs bg-rose-900/50 text-rose-300 px-2 py-1 rounded font-medium">HASH</span>
+                <h2 class="text-lg sm:text-xl font-bold text-white">HashUtils</h2>
+                <span class="mono text-[10px] text-slate-600">v1.1.0</span>
+            </div>
+            <p class="mono text-xs text-slate-500 mb-4">io.github.sidneyroberto9.rotom.hash</p>
+            <p class="text-slate-400 mb-6 text-sm sm:text-base">Cálculo de hashes criptográficos (checksums) de
+                bytes, strings, streams e arquivos.</p>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-xl mb-6">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm searchable-table min-w-[520px]">
+                        <thead>
+                        <tr class="border-b border-slate-800">
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Método</th>
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Retorno</th>
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Descrição</th>
+                        </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800/50">
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-rose-300 text-xs whitespace-nowrap">hash(byte[]/String/InputStream/File, String algorithm)</td>
+                            <td class="px-4 py-3"><span class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Hash hexadecimal usando qualquer algoritmo de <code class="mono bg-slate-800 px-1 rounded">MessageDigest</code>.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-rose-300 text-xs whitespace-nowrap">md5(byte[] data)</td>
+                            <td class="px-4 py-3"><span class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Atalho para <code class="mono bg-slate-800 px-1 rounded">hash(data, "MD5")</code>.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-rose-300 text-xs whitespace-nowrap">sha256(byte[] data)</td>
+                            <td class="px-4 py-3"><span class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Atalho para <code class="mono bg-slate-800 px-1 rounded">hash(data, "SHA-256")</code>.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-rose-300 text-xs whitespace-nowrap">sha512(byte[] data)</td>
+                            <td class="px-4 py-3"><span class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Atalho para <code class="mono bg-slate-800 px-1 rounded">hash(data, "SHA-512")</code>.</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 sm:p-5">
+                <p class="text-xs text-slate-500 mb-3 font-semibold uppercase tracking-wider">Exemplo</p>
+                <pre class="mono text-xs sm:text-sm text-slate-300 overflow-x-auto"><span class="text-cyan-300">HashUtils</span> hash = <span class="text-amber-300">new</span> <span class="text-cyan-300">HashUtils</span>();
+
+hash.sha256(<span class="text-emerald-400">"hello world"</span>.getBytes());
+<span class="text-slate-500">// "b94d27b9934d3e08a52e52d7da7dabfac484efe37a5380ee9088f7ace2efcde"</span>
+
+hash.hash(<span class="text-amber-300">new</span> <span class="text-cyan-300">File</span>(<span class="text-emerald-400">"/tmp/arquivo.txt"</span>), <span class="text-emerald-400">"SHA-512"</span>);</pre>
+            </div>
+        </section>
+
+        <!-- Gsm7Converter -->
+        <section id="gsm7">
+            <div class="flex items-center gap-3 mb-1">
+                <span class="mono text-xs bg-violet-900/50 text-violet-300 px-2 py-1 rounded font-medium">SMS</span>
+                <h2 class="text-lg sm:text-xl font-bold text-white">Gsm7Converter</h2>
+                <span class="mono text-[10px] text-slate-600">v1.1.0</span>
+            </div>
+            <p class="mono text-xs text-slate-500 mb-4">io.github.sidneyroberto9.rotom.sms</p>
+            <p class="text-slate-400 mb-6 text-sm sm:text-base">Converte texto UTF-8 para o alfabeto padrão GSM 7-bit
+                usado em corpos de SMS.</p>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-xl mb-6">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm searchable-table min-w-[480px]">
+                        <thead>
+                        <tr class="border-b border-slate-800">
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Método</th>
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Retorno</th>
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Descrição</th>
+                        </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800/50">
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-violet-300 text-xs whitespace-nowrap">convertToGsm7(String input)</td>
+                            <td class="px-4 py-3"><span class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Mantém chars GSM-7, converte acentos mapeados para ASCII, descarta o resto silenciosamente.</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 sm:p-5">
+                <p class="text-xs text-slate-500 mb-3 font-semibold uppercase tracking-wider">Exemplo</p>
+                <pre class="mono text-xs sm:text-sm text-slate-300 overflow-x-auto"><span class="text-cyan-300">Gsm7Converter</span> gsm7 = <span class="text-amber-300">new</span> <span class="text-cyan-300">Gsm7Converter</span>();
+
+gsm7.convertToGsm7(<span class="text-emerald-400">"Olá, você recebeu um código!"</span>);
+<span class="text-slate-500">// "Ola, voce recebeu um codigo!"</span></pre>
+            </div>
+        </section>
+
+        <!-- EmailValidator -->
+        <section id="emailvalidator">
+            <div class="flex items-center gap-3 mb-1">
+                <span class="mono text-xs bg-sky-900/50 text-sky-300 px-2 py-1 rounded font-medium">MAIL</span>
+                <h2 class="text-lg sm:text-xl font-bold text-white">EmailValidator</h2>
+                <span class="mono text-[10px] text-slate-600">v1.1.0</span>
+            </div>
+            <p class="mono text-xs text-slate-500 mb-4">io.github.sidneyroberto9.rotom.validation</p>
+            <p class="text-slate-400 mb-6 text-sm sm:text-base">Validação estrutural de e-mail via regex (sem
+                consulta DNS/MX).</p>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-xl mb-6">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm searchable-table min-w-[480px]">
+                        <thead>
+                        <tr class="border-b border-slate-800">
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Método</th>
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Retorno</th>
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Descrição</th>
+                        </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800/50">
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-sky-300 text-xs whitespace-nowrap">isValid(String email)</td>
+                            <td class="px-4 py-3"><span class="tag-boolean mono text-xs px-2 py-0.5 rounded-full">boolean</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Verifica formato <code class="mono bg-slate-800 px-1 rounded">local@dominio.tld</code>. Null-safe.</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 sm:p-5">
+                <p class="text-xs text-slate-500 mb-3 font-semibold uppercase tracking-wider">Exemplo</p>
+                <pre class="mono text-xs sm:text-sm text-slate-300 overflow-x-auto"><span class="text-cyan-300">EmailValidator</span> emailValidator = <span class="text-amber-300">new</span> <span class="text-cyan-300">EmailValidator</span>();
+
+emailValidator.isValid(<span class="text-emerald-400">"usuario@gmail.com"</span>);  <span class="text-slate-500">// true</span>
+emailValidator.isValid(<span class="text-emerald-400">"usuario@localhost"</span>);   <span class="text-slate-500">// false — sem TLD</span></pre>
+            </div>
+        </section>
+
+        <!-- PasswordValidator -->
+        <section id="passwordvalidator">
+            <div class="flex items-center gap-3 mb-1">
+                <span class="mono text-xs bg-sky-900/50 text-sky-300 px-2 py-1 rounded font-medium">PWD</span>
+                <h2 class="text-lg sm:text-xl font-bold text-white">PasswordValidator</h2>
+                <span class="mono text-[10px] text-slate-600">v1.1.0</span>
+            </div>
+            <p class="mono text-xs text-slate-500 mb-4">io.github.sidneyroberto9.rotom.validation</p>
+            <p class="text-slate-400 mb-6 text-sm sm:text-base">Validação de força de senha: 8–16 caracteres, com
+                dígito, minúscula, maiúscula, caractere especial, e sem espaços.</p>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-xl mb-6">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm searchable-table min-w-[480px]">
+                        <thead>
+                        <tr class="border-b border-slate-800">
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Método</th>
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Retorno</th>
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Descrição</th>
+                        </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800/50">
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-sky-300 text-xs whitespace-nowrap">isStrong(String password)</td>
+                            <td class="px-4 py-3"><span class="tag-boolean mono text-xs px-2 py-0.5 rounded-full">boolean</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Exige todas as categorias simultaneamente. Null-safe.</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 sm:p-5">
+                <p class="text-xs text-slate-500 mb-3 font-semibold uppercase tracking-wider">Exemplo</p>
+                <pre class="mono text-xs sm:text-sm text-slate-300 overflow-x-auto"><span class="text-cyan-300">PasswordValidator</span> passwordValidator = <span class="text-amber-300">new</span> <span class="text-cyan-300">PasswordValidator</span>();
+
+passwordValidator.isStrong(<span class="text-emerald-400">"Abc123!@"</span>);   <span class="text-slate-500">// true</span>
+passwordValidator.isStrong(<span class="text-emerald-400">"abc123!@"</span>);    <span class="text-slate-500">// false — sem maiúscula</span></pre>
+            </div>
+        </section>
+
+        <!-- NumberUtils -->
+        <section id="numberutils">
+            <div class="flex items-center gap-3 mb-1">
+                <span class="mono text-xs bg-sky-900/50 text-sky-300 px-2 py-1 rounded font-medium">NUM</span>
+                <h2 class="text-lg sm:text-xl font-bold text-white">NumberUtils</h2>
+                <span class="mono text-[10px] text-slate-600">v1.1.0</span>
+            </div>
+            <p class="mono text-xs text-slate-500 mb-4">io.github.sidneyroberto9.rotom.validation</p>
+            <p class="text-slate-400 mb-6 text-sm sm:text-base">Verifica se uma string representa um número válido.</p>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-xl mb-6">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm searchable-table min-w-[480px]">
+                        <thead>
+                        <tr class="border-b border-slate-800">
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Método</th>
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Retorno</th>
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Descrição</th>
+                        </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800/50">
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-sky-300 text-xs whitespace-nowrap">isInteger(String value)</td>
+                            <td class="px-4 py-3"><span class="tag-boolean mono text-xs px-2 py-0.5 rounded-full">boolean</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Válido para <code class="mono bg-slate-800 px-1 rounded">Integer.parseInt</code>.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-sky-300 text-xs whitespace-nowrap">isFloat(String value)</td>
+                            <td class="px-4 py-3"><span class="tag-boolean mono text-xs px-2 py-0.5 rounded-full">boolean</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Válido para <code class="mono bg-slate-800 px-1 rounded">Float.parseFloat</code> (aceita notação científica).</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-sky-300 text-xs whitespace-nowrap">isDouble(String value)</td>
+                            <td class="px-4 py-3"><span class="tag-boolean mono text-xs px-2 py-0.5 rounded-full">boolean</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Válido para <code class="mono bg-slate-800 px-1 rounded">Double.parseDouble</code>.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-sky-300 text-xs whitespace-nowrap">isNumeric(String value)</td>
+                            <td class="px-4 py-3"><span class="tag-boolean mono text-xs px-2 py-0.5 rounded-full">boolean</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Padrão numérico simples via regex (sem notação científica).</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 sm:p-5">
+                <p class="text-xs text-slate-500 mb-3 font-semibold uppercase tracking-wider">Exemplo</p>
+                <pre class="mono text-xs sm:text-sm text-slate-300 overflow-x-auto"><span class="text-cyan-300">NumberUtils</span> numberUtils = <span class="text-amber-300">new</span> <span class="text-cyan-300">NumberUtils</span>();
+
+numberUtils.isInteger(<span class="text-emerald-400">"42"</span>);    <span class="text-slate-500">// true</span>
+numberUtils.isNumeric(<span class="text-emerald-400">"1.5e10"</span>); <span class="text-slate-500">// false — isDouble aceitaria, isNumeric não</span></pre>
+            </div>
+        </section>
+
+        <!-- MoneyUtils -->
+        <section id="moneyutils">
+            <div class="flex items-center gap-3 mb-1">
+                <span class="mono text-xs bg-lime-900/50 text-lime-300 px-2 py-1 rounded font-medium">R$</span>
+                <h2 class="text-lg sm:text-xl font-bold text-white">MoneyUtils</h2>
+                <span class="mono text-[10px] text-slate-600">v1.1.0</span>
+            </div>
+            <p class="mono text-xs text-slate-500 mb-4">io.github.sidneyroberto9.rotom.money</p>
+            <p class="text-slate-400 mb-6 text-sm sm:text-base">Formatação de valores monetários como moeda
+                brasileira (BRL).</p>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-xl mb-6">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm searchable-table min-w-[480px]">
+                        <thead>
+                        <tr class="border-b border-slate-800">
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Método</th>
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Retorno</th>
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Descrição</th>
+                        </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800/50">
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-lime-300 text-xs whitespace-nowrap">formatBRL(double / BigDecimal value)</td>
+                            <td class="px-4 py-3"><span class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Formata como <code class="mono bg-slate-800 px-1 rounded">R$ 1.234,56</code>.</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 sm:p-5">
+                <p class="text-xs text-slate-500 mb-3 font-semibold uppercase tracking-wider">Exemplo</p>
+                <pre class="mono text-xs sm:text-sm text-slate-300 overflow-x-auto"><span class="text-cyan-300">MoneyUtils</span> money = <span class="text-amber-300">new</span> <span class="text-cyan-300">MoneyUtils</span>();
+
+money.formatBRL(<span class="text-emerald-400">1234.56</span>);  <span class="text-slate-500">// "R$ 1.234,56"</span></pre>
+            </div>
+        </section>
+
+        <!-- MaskUtils -->
+        <section id="maskutils">
+            <div class="flex items-center gap-3 mb-1">
+                <span class="mono text-xs bg-lime-900/50 text-lime-300 px-2 py-1 rounded font-medium">MASK</span>
+                <h2 class="text-lg sm:text-xl font-bold text-white">MaskUtils</h2>
+                <span class="mono text-[10px] text-slate-600">v1.1.0</span>
+            </div>
+            <p class="mono text-xs text-slate-500 mb-4">io.github.sidneyroberto9.rotom.mask</p>
+            <p class="text-slate-400 mb-6 text-sm sm:text-base">Máscara de exibição LGPD-friendly de CPF/CNPJ,
+                ocultando a maior parte dos dígitos.</p>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-xl mb-6">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm searchable-table min-w-[480px]">
+                        <thead>
+                        <tr class="border-b border-slate-800">
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Método</th>
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Retorno</th>
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Descrição</th>
+                        </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800/50">
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-lime-300 text-xs whitespace-nowrap">maskCpf(String cpf)</td>
+                            <td class="px-4 py-3"><span class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Mostra só os 3 primeiros e 2 últimos dígitos: <code class="mono bg-slate-800 px-1 rounded">123.***.***-09</code>.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-lime-300 text-xs whitespace-nowrap">maskCnpj(String cnpj)</td>
+                            <td class="px-4 py-3"><span class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Mostra os 2 primeiros dígitos e o bloco da filial.</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 sm:p-5">
+                <p class="text-xs text-slate-500 mb-3 font-semibold uppercase tracking-wider">Exemplo</p>
+                <pre class="mono text-xs sm:text-sm text-slate-300 overflow-x-auto"><span class="text-cyan-300">MaskUtils</span> maskUtils = <span class="text-amber-300">new</span> <span class="text-cyan-300">MaskUtils</span>();
+
+maskUtils.maskCpf(<span class="text-emerald-400">"12345678909"</span>);      <span class="text-slate-500">// "123.***.***-09"</span>
+maskUtils.maskCnpj(<span class="text-emerald-400">"12345678000195"</span>);  <span class="text-slate-500">// "12.***.***/0001-**"</span></pre>
+            </div>
+        </section>
+
+        <!-- FileUtils -->
+        <section id="fileutils">
+            <div class="flex items-center gap-3 mb-1">
+                <span class="mono text-xs bg-lime-900/50 text-lime-300 px-2 py-1 rounded font-medium">FILE</span>
+                <h2 class="text-lg sm:text-xl font-bold text-white">FileUtils</h2>
+                <span class="mono text-[10px] text-slate-600">v1.1.0</span>
+            </div>
+            <p class="mono text-xs text-slate-500 mb-4">io.github.sidneyroberto9.rotom.io</p>
+            <p class="text-slate-400 mb-6 text-sm sm:text-base">Operações comuns de arquivo: Base64, tamanho legível
+                e mover para o diretório de trabalho (via <code class="mono bg-slate-800 px-1 rounded text-xs">java.nio.file</code>, sem Guava).</p>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-xl mb-6">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm searchable-table min-w-[480px]">
+                        <thead>
+                        <tr class="border-b border-slate-800">
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Método</th>
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Retorno</th>
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Descrição</th>
+                        </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800/50">
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-lime-300 text-xs whitespace-nowrap">toBase64(File file / String path)</td>
+                            <td class="px-4 py-3"><span class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Lê o arquivo e codifica em Base64.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-lime-300 text-xs whitespace-nowrap">formatSize(long bytes)</td>
+                            <td class="px-4 py-3"><span class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Tamanho legível, ex. <code class="mono bg-slate-800 px-1 rounded">1.5 KB</code>.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-lime-300 text-xs whitespace-nowrap">moveToWorkspace(File file[, String name])</td>
+                            <td class="px-4 py-3"><span class="tag-object mono text-xs px-2 py-0.5 rounded-full">File</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Move para <code class="mono bg-slate-800 px-1 rounded">user.dir</code>, preservando a extensão original.</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 sm:p-5">
+                <p class="text-xs text-slate-500 mb-3 font-semibold uppercase tracking-wider">Exemplo</p>
+                <pre class="mono text-xs sm:text-sm text-slate-300 overflow-x-auto"><span class="text-cyan-300">FileUtils</span> fileUtils = <span class="text-amber-300">new</span> <span class="text-cyan-300">FileUtils</span>();
+
+fileUtils.formatSize(<span class="text-emerald-400">1536</span>);  <span class="text-slate-500">// "1.5 KB"</span>
+fileUtils.moveToWorkspace(<span class="text-amber-300">new</span> <span class="text-cyan-300">File</span>(<span class="text-emerald-400">"/tmp/upload.pdf"</span>), <span class="text-emerald-400">"contrato-123"</span>);
+<span class="text-slate-500">// move para {user.dir}/contrato-123.pdf</span></pre>
+            </div>
+        </section>
+
+        <!-- DurationUtils -->
+        <section id="durationutils">
+            <div class="flex items-center gap-3 mb-1">
+                <span class="mono text-xs bg-amber-900/50 text-amber-300 px-2 py-1 rounded font-medium">DUR</span>
+                <h2 class="text-lg sm:text-xl font-bold text-white">DurationUtils</h2>
+                <span class="mono text-[10px] text-slate-600">v1.1.0</span>
+            </div>
+            <p class="mono text-xs text-slate-500 mb-4">io.github.sidneyroberto9.rotom.date</p>
+            <p class="text-slate-400 mb-6 text-sm sm:text-base">Calcula e descreve a duração entre dois instantes,
+                com saída legível em português.</p>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-xl mb-6">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm searchable-table min-w-[520px]">
+                        <thead>
+                        <tr class="border-b border-slate-800">
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Método</th>
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Retorno</th>
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Descrição</th>
+                        </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800/50">
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-amber-300 text-xs whitespace-nowrap">daysBetween(LocalDateTime, LocalDateTime)</td>
+                            <td class="px-4 py-3"><span class="tag-long mono text-xs px-2 py-0.5 rounded-full">long</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Dias inteiros entre dois instantes.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-amber-300 text-xs whitespace-nowrap">hoursBetween(LocalDateTime, LocalDateTime)</td>
+                            <td class="px-4 py-3"><span class="tag-long mono text-xs px-2 py-0.5 rounded-full">long</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Horas inteiras entre dois instantes.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-amber-300 text-xs whitespace-nowrap">humanizeHoursAndMinutes(LocalDateTime, LocalDateTime)</td>
+                            <td class="px-4 py-3"><span class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Ex. <code class="mono bg-slate-800 px-1 rounded">"2 hora(s) e 15 minuto(s)"</code>.</td>
+                        </tr>
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-amber-300 text-xs whitespace-nowrap">humanizeDaysHoursAndMinutes(LocalDateTime, LocalDateTime)</td>
+                            <td class="px-4 py-3"><span class="tag-string mono text-xs px-2 py-0.5 rounded-full">String</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Ex. <code class="mono bg-slate-800 px-1 rounded">"1 dia(s) 3 hora(s) e 20 minuto(s)"</code>.</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 sm:p-5">
+                <p class="text-xs text-slate-500 mb-3 font-semibold uppercase tracking-wider">Exemplo</p>
+                <pre class="mono text-xs sm:text-sm text-slate-300 overflow-x-auto"><span class="text-cyan-300">DurationUtils</span> durationUtils = <span class="text-amber-300">new</span> <span class="text-cyan-300">DurationUtils</span>();
+
+durationUtils.humanizeHoursAndMinutes(inicio, fim);  <span class="text-slate-500">// "2 hora(s) e 15 minuto(s)"</span></pre>
+            </div>
+        </section>
+
+        <!-- BrasilApiHolidayService -->
+        <section id="holidayservice">
+            <div class="flex items-center gap-3 mb-1">
+                <span class="mono text-xs bg-amber-900/50 text-amber-300 px-2 py-1 rounded font-medium">HOL</span>
+                <h2 class="text-lg sm:text-xl font-bold text-white">BrasilApiHolidayService</h2>
+                <span class="mono text-[10px] text-slate-600">v1.1.0</span>
+            </div>
+            <p class="mono text-xs text-slate-500 mb-4">io.github.sidneyroberto9.rotom.date.holiday</p>
+            <p class="text-slate-400 mb-6 text-sm sm:text-base">Busca feriados nacionais brasileiros via
+                <a class="text-amber-300 hover:underline" href="https://brasilapi.com.br/docs#tag/Feriados-Nacionais" target="_blank">BrasilAPI</a>
+                (chamada HTTP em tempo real, sem cache — diferente de <code class="mono bg-slate-800 px-1 rounded text-xs">DateService</code>, que usa o calendário offline jollyday).</p>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-xl mb-6">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm searchable-table min-w-[480px]">
+                        <thead>
+                        <tr class="border-b border-slate-800">
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Método</th>
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Retorno</th>
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Descrição</th>
+                        </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800/50">
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-amber-300 text-xs whitespace-nowrap">getHolidays(int year)</td>
+                            <td class="px-4 py-3"><span class="tag-object mono text-xs px-2 py-0.5 rounded-full">Set&lt;LocalDate&gt;</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Busca via <code class="mono bg-slate-800 px-1 rounded">GET /api/feriados/v1/{year}</code>. Lança <code class="mono bg-slate-800 px-1 rounded">IOException</code> em falha.</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 sm:p-5">
+                <p class="text-xs text-slate-500 mb-3 font-semibold uppercase tracking-wider">Exemplo</p>
+                <pre class="mono text-xs sm:text-sm text-slate-300 overflow-x-auto"><span class="text-cyan-300">BrasilApiHolidayService</span> holidayService = <span class="text-amber-300">new</span> <span class="text-cyan-300">BrasilApiHolidayService</span>();
+
+<span class="text-cyan-300">Set</span>&lt;<span class="text-cyan-300">LocalDate</span>&gt; feriados = holidayService.getHolidays(<span class="text-emerald-400">2026</span>);
+feriados.contains(<span class="text-cyan-300">LocalDate</span>.of(<span class="text-emerald-400">2026</span>, <span class="text-emerald-400">1</span>, <span class="text-emerald-400">1</span>));  <span class="text-slate-500">// true — Ano Novo</span></pre>
+            </div>
+        </section>
+
+        <!-- CollectionUtils -->
+        <section id="collectionutils">
+            <div class="flex items-center gap-3 mb-1">
+                <span class="mono text-xs bg-fuchsia-900/50 text-fuchsia-300 px-2 py-1 rounded font-medium">COL</span>
+                <h2 class="text-lg sm:text-xl font-bold text-white">CollectionUtils</h2>
+                <span class="mono text-[10px] text-slate-600">v1.1.0</span>
+            </div>
+            <p class="mono text-xs text-slate-500 mb-4">io.github.sidneyroberto9.rotom.collections</p>
+            <p class="text-slate-400 mb-6 text-sm sm:text-base">Operações comuns de coleção.</p>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-xl mb-6">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm searchable-table min-w-[480px]">
+                        <thead>
+                        <tr class="border-b border-slate-800">
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Método</th>
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Retorno</th>
+                            <th class="text-left px-4 py-3 text-slate-500 font-medium text-xs uppercase tracking-wider">Descrição</th>
+                        </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800/50">
+                        <tr class="method-row transition-colors">
+                            <td class="px-4 py-3 mono text-fuchsia-300 text-xs whitespace-nowrap">&lt;T&gt; removeDuplicates(List&lt;T&gt; list)</td>
+                            <td class="px-4 py-3"><span class="tag-object mono text-xs px-2 py-0.5 rounded-full">List&lt;T&gt;</span></td>
+                            <td class="px-4 py-3 text-slate-400 text-xs">Remove duplicatas preservando a ordem de primeira ocorrência. O(n) via <code class="mono bg-slate-800 px-1 rounded">LinkedHashSet</code>.</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-xl p-4 sm:p-5">
+                <p class="text-xs text-slate-500 mb-3 font-semibold uppercase tracking-wider">Exemplo</p>
+                <pre class="mono text-xs sm:text-sm text-slate-300 overflow-x-auto"><span class="text-cyan-300">CollectionUtils</span> collectionUtils = <span class="text-amber-300">new</span> <span class="text-cyan-300">CollectionUtils</span>();
+
+collectionUtils.removeDuplicates(<span class="text-cyan-300">List</span>.of(<span class="text-emerald-400">"a"</span>, <span class="text-emerald-400">"b"</span>, <span class="text-emerald-400">"a"</span>, <span class="text-emerald-400">"c"</span>));
+<span class="text-slate-500">// ["a", "b", "c"]</span></pre>
             </div>
         </section>
 
         <footer class="border-t border-slate-800 pt-8 pb-16 text-center text-xs text-slate-600">
-            utils-java · MIT License · <a class="hover:text-slate-400 transition"
-                                          href="https://github.com/sidneyroberto9">sidneyroberto9</a>
+            rotom · MIT License · <a class="hover:text-slate-400 transition"
+                                          href="https://github.com/SidneyRoberto9">SidneyRoberto9</a>
         </footer>
 
     </div>

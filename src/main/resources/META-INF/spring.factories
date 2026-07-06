@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  br.io.sidneyroberto9.utils.autoconfigure.UtilsAutoConfiguration
+  io.github.sidneyroberto9.rotom.autoconfigure.RotomAutoConfiguration

@@ -6,17 +6,17 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.github.sidneyroberto9</groupId>
-    <artifactId>utils</artifactId>
-    <version>1.0.5</version>
+    <artifactId>rotom</artifactId>
+    <version>1.1.0</version>
     <packaging>jar</packaging>
 
-    <name>SidneyRoberto9 Utils</name>
+    <name>Rotom — Java Utils</name>
 
     <description>
         Java utility library with validators, formatters, CEP fallback and reusable helpers
     </description>
 
-    <url>https://github.com/SidneyRoberto9/utils</url>
+    <url>https://github.com/SidneyRoberto9/rotom</url>
 
     <licenses>
         <license>
@@ -34,9 +34,9 @@
     </developers>
 
     <scm>
-        <connection>scm:git:git://github.com/SidneyRoberto9/utils.git</connection>
-        <developerConnection>scm:git:ssh://github.com/sidneyroberto9/utils.git</developerConnection>
-        <url>https://github.com/sidneyroberto9/utils</url>
+        <connection>scm:git:git://github.com/SidneyRoberto9/rotom.git</connection>
+        <developerConnection>scm:git:ssh://github.com/sidneyroberto9/rotom.git</developerConnection>
+        <url>https://github.com/sidneyroberto9/rotom</url>
     </scm>
 
     <properties>

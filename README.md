@@ -1,6 +1,6 @@
-# utils
+# Rotom
 
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.sidneyroberto9/utils)](https://central.sonatype.com/artifact/io.github.sidneyroberto9/utils)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.sidneyroberto9/rotom)](https://central.sonatype.com/artifact/io.github.sidneyroberto9/rotom)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 [![Java](https://img.shields.io/badge/Java-11%2B-orange)](https://www.oracle.com/java/technologies/javase/jdk11-archive-downloads.html)
 
@@ -18,7 +18,7 @@ Brazilian-focused Java utility library with validators, formatters, CEP lookup, 
 ```xml
 <dependency>
     <groupId>io.github.sidneyroberto9</groupId>
-    <artifactId>utils</artifactId>
+    <artifactId>rotom</artifactId>
     <version>1.0.5</version>
 </dependency>
 ```
@@ -26,7 +26,7 @@ Brazilian-focused Java utility library with validators, formatters, CEP lookup, 
 **Gradle**
 
 ```groovy
-implementation 'io.github.sidneyroberto9:utils:1.0.5'
+implementation 'io.github.sidneyroberto9:rotom:1.0.5'
 ```
 
 ## Usage
