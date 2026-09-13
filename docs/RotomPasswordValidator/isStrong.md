@@ -6,7 +6,7 @@
 ## Descrição
 
 Verifica se a senha é forte: 8 a 16 caracteres, com pelo menos um dígito, uma letra minúscula, uma
-letra maiúscula, um caractere especial do conjunto `@#_$%^&<>?,/:;|'"+!.}(){%~^$`, e sem espaços em
+letra maiúscula, um caractere especial do conjunto {% raw %}`@#_$%^&<>?,/:;|'"+!.}(){%~^$`{% endraw %}, e sem espaços em
 branco.
 
 ## Parâmetros
